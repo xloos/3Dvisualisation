@@ -29,4 +29,31 @@ router.post('/register', async (req, res) => {
     }
 });
 
+router.post('/login', async (req, res) => {
+  console.log('Login route hit');
+  console.log(req.body);
+
+  try {
+    const { username, password } = req.body;
+
+    // Check if the user exists and the password is valid
+    const user = await User.findByUsernameAndPassword(username, password);
+    console.log('User:', user);
+
+    if (!user) {
+      console.log('Invalid username or password.');
+      return res.status(400).send('Invalid username or password.');
+    }
+
+    console.log('Login successful.');
+    res.status(200).send('Login successful.');
+  } catch (error) {
+    console.log('Server error:', error);
+    res.status(500).send('Server error.');
+  }
+});
+
+  
+  
+
 module.exports = router;
