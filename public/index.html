@@ -8,6 +8,10 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/aframe-extras/dist/aframe-extras.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+
+  
   <style>
     /* CSS styles for the dashboard */
     #dashboard {
@@ -126,12 +130,45 @@
   </div>
   <div id="scene">
     <a-scene>
+
+      <!-- Načítanie modelov a textúr skladu -->
       <a-assets>
-        <a-asset-item id="model" src="europallete.gltf"></a-asset-item>
+        <a-asset-item id="europalette-model" src="europallete.glb"></a-asset-item>
+        <a-asset-item id="boxes" src="boxes.gltf"></a-asset-item>
+        <a-asset-item id="switchboard" src="switchboard.gltf"></a-asset-item>
+        <a-asset-item id="hangar" src="hangar.glb"></a-asset-item>
+        <a-asset-item id="doors" src="doors.glb"></a-asset-item>
+        <a-asset-item id="worklight" src="worklight.glb"></a-asset-item>
       </a-assets>
-      <a-entity gltf-model="#europalette-model" position="0 0 0" scale="10 10 10"></a-entity>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+
+      <!-- Kamera s navigačnými kontrolami -->
+      <a-entity camera look-controls wasd-controls="fly: true" position="7 2 -17" rotation="0 -90 0"></a-entity>
+
+      <!-- Osvetlenie scény -->
+        <!-- Ambientné svetlo pre jemné osvetlenie celej scény -->
+      <a-light type="ambient" color="#555" intensity="0.1"></a-light>
+
+        <!-- Hlavné svetlo -->
+      <a-light type="point" castShadow="true" color="#FFF" intensity="2" distance="50" decay="2" position="0 8 0 "></a-light>
+
+      <!-- Pozadie scény -->
+      <a-entity environment="preset: forest"></a-entity>
+
+      
+      <!-- Modely a objekty... -->
+    <a-entity gltf-model="#europalette-model" shadow="cast: true; receive: true" position="0 0 -2" scale="3 3 3"></a-entity>
+    <a-entity gltf-model="#hangar" shadow="cast: true; receive: true" position="0 -1 0" scale="0.5 0.5 0.5"></a-entity>
+    <a-entity gltf-model="#switchboard" shadow="cast: true; receive: true" position="7 1 -19.7" scale="3 3 3"></a-entity>
+    <a-entity gltf-model="#doors" shadow="cast: true; receive: true" position="0 -2.4 -21" scale="9 10 8"></a-entity>
+    <a-entity gltf-model="#boxes" shadow="cast: true; receive: true" position="0 0.5 -2" scale="3 3 3" rotation="0 180 0"></a-entity>
+      <!-- Lamp with spotlight -->
+    <a-entity gltf-model="#worklight" shadow="cast: true; receive: true" position="-7 -0.55 -17" scale="3 3 3" rotation="0 99 0">
+      <a-light type="spot" castShadow="true" color="#FFF" intensity="10" distance="20" decay="2" 
+              position="0 1 -0.5" rotation="0 180 0" angle="45" penumbra="0.1">
+      </a-light>
+    </a-entity>
+      
+
     </a-scene>
   </div>
 </body>
