@@ -1,5 +1,5 @@
 const sql = require('mssql');
-
+const bcrypt = require('bcryptjs');
 class User {
     static async findByUsername(username) {
         const pool = await sql.connect(/* your database connection config */);

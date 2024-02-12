@@ -37,19 +37,51 @@
   </template>
   
   <script>
-  export default {
-    name: 'LoginForm',
-    data() {
-      return {
-        loginUsername: '',
-        loginPassword: '',
-      };
+export default {
+  name: 'LoginForm',
+  data() {
+    return {
+      loginUsername: '',
+      loginPassword: '',
+    };
+  },
+  methods: {
+    async loginUser() {
+      try {
+        const response = await fetch('/api/users/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: this.loginUsername,
+            password: this.loginPassword,
+          }),
+        });
+
+        if (response.ok) {
+          // Prihlásenie bolo úspešné
+          console.log('Login successful');
+          
+          console.log(localStorage.getItem('isLoggedIn'));
+          localStorage.setItem('isLoggedIn', 'true');
+          console.log(localStorage.getItem('isLoggedIn'));
+          // Tu môžete pridať logiku pre presmerovanie alebo zobrazenie úspešnej správy
+          // Napríklad môžete uložiť token do localStorage a presmerovať užívateľa
+          this.$router.push('/mainpage'); // Presmerovanie na hlavnú stránku
+        } else {
+          // Prihlásenie zlyhalo
+          console.log('Login failed');
+          // Zobrazte chybovú správu alebo upozornenie
+          alert('Invalid username or password');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        // Spracovanie chyby, napríklad zobrazenie chybovej správy
+        alert('An error occurred. Please try again.');
+      }
     },
-    methods: {
-      async loginUser() {
-        // Metóda pre prihlásenie užívateľa
-      },
-    },
-  }
-  </script>
+  },
+}
+</script>
   
