@@ -1,8 +1,9 @@
 <template>
+  
     <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div class="max-w-md w-full space-y-8">
         <div>
-          <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+          <img class="mx-auto h-20 w-auto" src="..\assets\exe_logo.png" alt="Your Company">
           <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Sign in to your account
           </h2>
@@ -60,15 +61,11 @@ export default {
         });
 
         if (response.ok) {
-          // Prihlásenie bolo úspešné
-          console.log('Login successful');
-          
-          console.log(localStorage.getItem('isLoggedIn'));
-          localStorage.setItem('isLoggedIn', 'true');
-          console.log(localStorage.getItem('isLoggedIn'));
-          // Tu môžete pridať logiku pre presmerovanie alebo zobrazenie úspešnej správy
-          // Napríklad môžete uložiť token do localStorage a presmerovať užívateľa
-          this.$router.push('/mainpage'); // Presmerovanie na hlavnú stránku
+          const userDetails = await response.json(); // Prevedie odpoveď na JSON
+  localStorage.setItem('isLoggedIn', 'true');
+  localStorage.setItem('username', userDetails.username); // Uloží meno užívateľa pre neskoršie použitie
+  window.dispatchEvent(new CustomEvent('login-change')); // Informuje aplikáciu o zmene stavu prihlásenia
+  this.$router.push('/mainpage'); // Presmerovanie na hlavnú stránku
         } else {
           // Prihlásenie zlyhalo
           console.log('Login failed');

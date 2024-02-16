@@ -45,8 +45,8 @@ router.post('/login', async (req, res) => {
       return res.status(400).send('Invalid username or password.');
     }
 
-    console.log('Login successful.');
-    res.status(200).send('Login successful.');
+    console.log('Login successfulko.');
+    res.status(200).json({ message: 'Login successfulko.', username: username });
   } catch (error) {
     console.log('Server error:', error);
     res.status(500).send('Server error.');
