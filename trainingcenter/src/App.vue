@@ -1,12 +1,12 @@
 <template>
-  <div id="app" class="flex h-screen bg-gray-100">
+  <div id="app" class="flex h-screen bg-gray-100 space-y-10">
     <!-- SideBar, zobrazený iba ak je užívateľ prihlásený -->
-    <div v-if="isLoggedIn" class="sidebar flex-shrink-0">
+    <div v-if="isLoggedIn" class="sidebar flex-shrink-0" >
       <SideBar />
     </div>
 
     <!-- Obsah a router-view zaberajú zvyšný priestor -->
-    <div class="content flex flex-1 flex-col">
+    <div class="content flex flex-1 flex-col" >
       <router-view />
       <!-- Dashboard Content -->
     </div>

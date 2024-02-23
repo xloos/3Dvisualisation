@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import LoginForm from '../components/LoginForm.vue';
 import RegisterForm from '../components/RegisterForm.vue';
 import MainPage from '../components/MainPage.vue';
+import TrainingPrograms from '../components/TrainingPrograms.vue'
 
 const routes = [
   {
@@ -23,7 +24,12 @@ const routes = [
     name: 'Mainpage',
     component: MainPage,
   },
-  // Pridajte ďalšie cesty podľa potreby
+
+  {
+    path: '/trainingprograms',
+    name: 'Trainingprograms',
+    component: TrainingPrograms,
+  },
 ];
 
 const router = createRouter({
