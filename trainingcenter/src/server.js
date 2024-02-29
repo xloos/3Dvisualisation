@@ -10,7 +10,7 @@ const PORT = 3000;
 const dbConfig = {
     user: 'foo',
     password: 'lolo',
-    server: '10.65.105.35',  // If you have a different instance name, replace 'SQLEXPRESS' accordingly
+    server: '10.71.30.80',  // If you have a different instance name, replace 'SQLEXPRESS' accordingly
     database: 'Login',
     options: {
         encrypt: true,  // Use true if you're on Azure
