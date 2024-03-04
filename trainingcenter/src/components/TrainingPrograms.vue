@@ -117,26 +117,55 @@
             </div>
             
           </div>
-          <div v-if="isPublished" class="w-full p-4 bg-white sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-              <h5 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">Work fast from anywhere</h5>
-              <p class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">Stay up to date and move work forward with Flowbite on iOS & Android. Download the app today.</p>
+          
+          <div v-show="isPublished" class="w-full bg-white sm:p-3 dark:bg-gray-800 dark:border-gray-700">
+              
               <div class=" space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
-                  <a href="#" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
-                      <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="apple" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path></svg>
+                <Transition name="bounce">
+                  <a v-if="isPublished" @click="openAFrameScene" href="#" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                    <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-play" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><g>
+                    <path fill="currentColor" d="M21.7,18H10.3C7.9,18,6,16.1,6,13.7V9.3C6,6.9,7.9,5,10.3,5h11.5C24.1,5,26,6.9,26,9.3v4.5C26,16.1,24.1,18,21.7,18z
+                      M10.3,7C9,7,8,8,8,9.3v4.5C8,15,9,16,10.3,16h11.5c1.3,0,2.3-1,2.3-2.3V9.3C24,8,23,7,21.7,7H10.3z"/>
+                  </g>
+                  <g>
+                    <path fill="currentColor" d="M19,11h-6c-0.6,0-1-0.4-1-1s0.4-1,1-1h6c0.6,0,1,0.4,1,1S19.6,11,19,11z"/>
+                  </g>
+                  <path fill="currentColor" d="M9.4,7.1h13.3c0.3,0,0.7-0.2,0.8-0.5c0.2-0.3,0.2-0.6,0.1-1C22.1,2.6,19.6,1,16,1c-3.6,0-6.1,1.6-7.5,4.7
+                    C8.3,6,8.3,6.4,8.5,6.7C8.7,7,9,7.1,9.4,7.1z"/>
+                  <g>
+                    <path fill="currentColor" d="M12,20.3v1.5c-0.9,0.2-1.8,0.5-2.6,0.8c1.6,1,4,1.6,6.6,1.6c2.6,0,5-0.6,6.6-1.6c-0.8-0.3-1.7-0.6-2.6-0.8v-1.5
+                      c0.9-0.7,1.7-1.7,2.4-2.8c0.2-0.3,0.2-0.7,0-1S21.9,16,21.5,16h-11c-0.4,0-0.7,0.2-0.9,0.5s-0.2,0.7,0,1
+                      C10.4,18.6,11.1,19.6,12,20.3z"/>
+                    <path fill="currentColor" d="M24.6,23.7c-1.9,1.6-5,2.6-8.6,2.6c-3.5,0-6.6-1-8.6-2.6c-2.5,1.6-4.1,3.8-4.4,6.2c0,0.3,0.1,0.6,0.2,0.8S3.8,31,4,31H28
+                      c0.3,0,0.6-0.1,0.7-0.3s0.3-0.5,0.2-0.8C28.7,27.4,27,25.2,24.6,23.7z"/>
+                  </g></svg>
                       <div class="text-left rtl:text-right">
-                          <div class="mb-1 text-xs">Download on the</div>
-                          <div class="-mt-1 font-sans text-sm font-semibold">Mac App Store</div>
+                          <div class="mb-1 text-xs">Open in Virtual Reality</div>
+                          <div class="-mt-1 font-sans text-sm font-semibold">Launch VR Experience</div>
                       </div>
                   </a>
-                  <a @click="openAFrameScene" href="#" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
-                      <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-play" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"></path></svg>
+                </Transition>
+                <Transition name="bounce">
+                  <a v-if="isPublished" href="#" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                      
+                      <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="apple" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                        <path fill="currentColor" d="M29.3,22.8L29.3,22.8l-3.9-4.7C24.8,17.4,24,17,23.1,17H8.9c-0.9,0-1.7,0.4-2.3,1.1l-3.9,4.7C2.2,23.3,2,24,2,24.7V27
+                        c0,1.7,1.3,3,3,3h22c1.7,0,3-1.3,3-3v-2.3C30,24,29.8,23.3,29.3,22.8z M8.2,19.4C8.4,19.1,8.6,19,8.9,19h14.1c0.3,0,0.6,0.1,0.8,0.4
+                        l3,3.6H5.1L8.2,19.4z"/>
+                      <g>
+                        <path fill="currentColor" d="M16.4,1.1c-0.3-0.1-0.6-0.1-0.9,0l-5.9,3L16,6.9l6.4-2.8L16.4,1.1z"/>
+                        <path fill="currentColor" d="M9,12c0,0.4,0.2,0.7,0.6,0.9l5.4,2.7v-7L9,6V12z"/>
+                        <path fill="currentColor" d="M17,8.6v7l5.4-2.7c0.3-0.2,0.6-0.5,0.6-0.9V6L17,8.6z"/>
+                      </g></svg>
                       <div class="text-left rtl:text-right">
-                          <div class="mb-1 text-xs">Get in on</div>
-                          <div class="-mt-1 font-sans text-sm font-semibold">Google Play</div>
+                          <div class="mb-1 text-xs">Open in Augmented Reality</div>
+                          <div class="-mt-1 font-sans text-sm font-semibold">Launch AR Experience</div>
                       </div>
                   </a>
+                </Transition>
               </div>
           </div>
+        
         </div>
         <div v-if="activeTab === 'about'" class="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800">
             <h2 class="mb-5 text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">Personal Milestones</h2>
@@ -234,7 +263,22 @@
   </script>
   
   <style>
-  /* Sem pridajte štýly pre komponentu */
-  
+ .bounce-enter-active {
+  animation: bounce-in 0.5s;
+}
+.bounce-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
   </style>
   
