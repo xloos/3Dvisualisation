@@ -1,3 +1,4 @@
+
 <template>
   
 
@@ -59,22 +60,15 @@
               </div>
             </div>
             <div class="mt-5 flex lg:ml-4 lg:mt-0">
-              <span class="hidden sm:block">
-                <button type="button" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                  <svg class="-ml-0.5 mr-1.5 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path d="M2.695 14.763l-1.262 3.154a.5.5 0 00.65.65l3.155-1.262a4 4 0 001.343-.885L17.5 5.5a2.121 2.121 0 00-3-3L3.58 13.42a4 4 0 00-.885 1.343z" />
-                  </svg>
-                  Edit
-                </button>
-              </span>
-
+              
               <span class="ml-3 hidden sm:block">
-                <button type="button" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                  <svg class="-ml-0.5 mr-1.5 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path d="M12.232 4.232a2.5 2.5 0 013.536 3.536l-1.225 1.224a.75.75 0 001.061 1.06l1.224-1.224a4 4 0 00-5.656-5.656l-3 3a4 4 0 00.225 5.865.75.75 0 00.977-1.138 2.5 2.5 0 01-.142-3.667l3-3z" />
-                    <path d="M11.603 7.963a.75.75 0 00-.977 1.138 2.5 2.5 0 01.142 3.667l-3 3a2.5 2.5 0 01-3.536-3.536l1.225-1.224a.75.75 0 00-1.061-1.06l-1.224 1.224a4 4 0 105.656 5.656l3-3a4 4 0 00-.225-5.865z" />
+                <button @click="toggleDescription" 
+    type="button" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                  
+                  View Details
+                  <svg :class="{ clicked }" class="image -mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
                   </svg>
-                  View
                 </button>
               </span>
 
@@ -84,7 +78,7 @@
                   <svg class="-ml-0.5 mr-1.5 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd" d="M20.3 3.7c.2.2.4.4.4.7.3 1.8.7 5.2-.9 6.8A75.2 75.2 0 0 1 8.6 18a1 1 0 0 1-.6-.3l-.8-.9-1-.8a1 1 0 0 1 0-1.2c1-2.2 4.8-8.9 6.6-10.6 1.6-1.6 5-1.2 6.8-1l.7.5ZM5.4 7.6l4-.4-2.7 4.5-2.8-.3a1 1 0 0 1-.6-1.7l2.1-2.1Zm11.4 7-.4 4-2 2.1a1 1 0 0 1-1.8-.6l-.4-2.8 4.6-2.7Zm.8-6.2a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" clip-rule="evenodd"/>
                   </svg>
-  
+                  
                   Launch
                 </button>
               </span>
@@ -165,6 +159,68 @@
                 </Transition>
               </div>
           </div>
+          <Transition :duration="550" name="nested">
+          <div v-show="descriptionToggle" class="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-2 lg:overflow-visible lg:px-0">
+      
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
+        <div class="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+          <div class="lg:pr-4">
+            <div class="lg:max-w-lg">
+              
+              <p class="mt-6 text-xl leading-8 text-gray-700">Welcome to "Building the Foundation," the first step in comprehensive skill development and education program for technical work. This section has been designed to lay a solid foundation for further education, with the necessary theoretical and practical knowledge being provided to prepare you for more advanced techniques and procedures.</p>
+            </div>
+          </div>
+        </div>
+        <div class="inner -ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+          <img class="" src="..\assets\pc_open.png" alt="" />
+        </div>
+        <div class="outer lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+          <div class="lg:pr-4">
+            <div class="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
+              <ul role="list" class="mt-8 space-y-8 text-gray-600">
+                <li class="flex gap-x-3">
+                  <CloudArrowUpIcon class="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                  <span><strong class="font-semibold text-gray-900">Preparing the Workspace.</strong> The preparation of a clean, safe, and efficiently organized workspace, fundamental for any technical work, will be taught.</span>
+                </li>
+                <li class="flex gap-x-3">
+                  <LockClosedIcon class="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                  <span><strong class="font-semibold text-gray-900">Installing the Processor (CPU).</strong> The process of selecting and installing the processor into the motherboard, including the application of thermal paste and the correct placement of the cooler, will be detailed.</span>
+                </li>
+                <li class="flex gap-x-3">
+                  <ServerIcon class="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                  <span><strong class="font-semibold text-gray-900">Installing Memory (RAM).</strong> Instructions on how to select and correctly install memory modules, ensuring the system's optimal performance, will be provided.</span>
+                </li>
+                <li class="flex gap-x-3">
+                  <ServerIcon class="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                  <span><strong class="font-semibold text-gray-900">Installing the Motherboard.</strong> Guidance for the safe installation of the motherboard into the computer case, including the correct connection of all cables, will be given.</span>
+                </li>
+              </ul>
+              
+              <h2 class="mt-16 text-2xl font-bold tracking-tight text-gray-900">Objective</h2>
+              <p class="mt-6">Equipping you with the basic skills and understanding necessary for the efficient and safe assembly and maintenance of technical systems is the main goal of this section. Upon completion of this section, the following will be achieved:</p>
+              
+              
+
+              <ul class="max-w-md space-y-1 text-black-500 list-disc list-inside dark:text-gray-400">
+                  <li>
+                    The importance of a well-prepared workspace will be understood.
+                  </li>
+                  <li>
+                    The ability to correctly install key computer components will be acquired.
+                  </li>
+                  <li>
+                    A foundation for the gradual building of more advanced technical skills will be established.
+                  </li>
+              </ul>
+
+              <h2 class="mt-16 text-2xl font-bold tracking-tight text-gray-900">Conclusion</h2>
+              <p class="mt-6">The "Building the Foundation" section, serving as your first step towards the mastery of technical work, provides a solid base upon which further skills can be built. With dedication and the correct approach to learning, the completion of this section with valuable skills and the confidence necessary to continue in your technical career can be expected.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Transition>
         
         </div>
         <div v-if="activeTab === 'about'" class="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800">
@@ -235,17 +291,26 @@
   </template>
   
   <script>
-
+import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/vue/24/outline'
 
   export default {
+    components: {
+      CloudArrowUpIcon,
+      LockClosedIcon,
+      ServerIcon
+  },
     name: 'TrainingPrograms',
     data() {
     return {
-      isPublished: false, // Stav určujúci, či je obsah zobrazený
+      clicked: false,
+      isPublished: false, // Stav určujúci, či je obsah spustania zobrazený
       activeTab: 'stats', // Predvolená aktívna záložka
+      descriptionToggle: false, // Stav určujúci, či je obsah vysvetlenia zobrazený
     };
   },
     methods: {
+      
+
       openAFrameScene() {
         // Toto otvorí nové okno s A-Frame scénou
         window.open('/aframe-scene.html', '_blank');
@@ -258,11 +323,63 @@
       togglePublish() {
       this.isPublished = !this.isPublished; // Prepnúť stav zobrazenia
       },
+
+      toggleDescription() {
+      this.descriptionToggle = !this.descriptionToggle; // Prepnúť stav zobrazenia
+      this.clicked = !this.clicked;
+      },
     }
   }
   </script>
   
   <style>
+
+.image {
+  transition: transform 0.5s ease-in-out;
+}
+
+.clicked {
+  transform: rotate(180deg);
+}
+
+  .outer, .inner {
+  padding: 0px;
+}
+  
+.inner { 
+  padding: 0px;
+}
+  
+.nested-enter-active, .nested-leave-active {
+	transition: all 0.3s ease-in-out;
+}
+/* delay leave of parent element */
+.nested-leave-active {
+  transition-delay: 0.25s;
+}
+
+.nested-enter-from,
+.nested-leave-to {
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+/* we can also transition nested elements using nested selectors */
+.nested-enter-active .inner,
+.nested-leave-active .inner { 
+  transition: all 0.3s ease-in-out;
+}
+/* delay enter of nested element */
+.nested-enter-active .inner {
+	transition-delay: 0.25s;
+}
+
+.nested-enter-from .inner,
+.nested-leave-to .inner {
+  transform: translateX(30px);
+ 
+  opacity: 0.001;
+}
  .bounce-enter-active {
   animation: bounce-in 0.5s;
 }
