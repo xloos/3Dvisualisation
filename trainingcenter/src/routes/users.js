@@ -29,6 +29,12 @@ router.post('/register', async (req, res) => {
     }
 });
 
+router.get('/logout', (req, res) => {
+  // Predpokladáme, že authToken je názov cookie pre autentifikáciu
+  res.clearCookie('userId');
+  res.status(200).send('Odhlásenie bolo úspešné.');
+});
+
 router.post('/login', async (req, res) => {
   console.log('Login route hit');
   console.log(req.body);
@@ -45,13 +51,16 @@ router.post('/login', async (req, res) => {
       return res.status(400).send('Invalid username or password.');
     }
 
-    console.log('Login successfulko.');
-    res.status(200).json({ message: 'Login successfulko.', username: username });
+    console.log('Login successfulan.');
+    res.cookie('userId', user.UserID, { httpOnly: true, secure: true, sameSite: 'strict' });
+    res.status(200).json({ message: 'Login successful.', username: username });
   } catch (error) {
     console.log('Server error:', error);
     res.status(500).send('Server error.');
   }
 });
+
+
 
   
   

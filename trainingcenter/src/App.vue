@@ -6,7 +6,7 @@
     </div>
 
     <!-- Obsah a router-view zaberajú zvyšný priestor -->
-    <div class="content flex flex-1 flex-col pt-4" >
+    <div class="content flex flex-1 flex-col px-4" >
       <router-view />
       <!-- Dashboard Content -->
     </div>

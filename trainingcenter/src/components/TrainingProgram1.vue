@@ -1,12 +1,11 @@
 
 <template>
   
-  <div v-for="course in courses" :key="course.CourseID" class="pl-5 pr-5 pt-10">
-    {{ console.log(course.CourseID) }}
-  <div class="w-full max-w-8xl mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-2">
+
+  <div class="w-full max-w-7xl mx-auto  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-5 mb-5">
     <div class="sm:hidden">
       <label for="tabs" class="sr-only">Select tab</label>
-      <select id="tabs" @change="changeTab(course.CourseID, $event.target.value)" class="bg-gray-50 border-0 border-b border-gray-200 text-gray-900 text-sm rounded-t-lg focus:ring-blue-500 focus:border-blue-500 blsock w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      <select id="tabs" @change="changeTab($event.target.value)" class="bg-gray-50 border-0 border-b border-gray-200 text-gray-900 text-sm rounded-t-lg focus:ring-blue-500 focus:border-blue-500 blsock w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <option value="stats">General</option>
         <option value="about">Milestones</option>
         <option value="faq">Statistics</option>
@@ -14,27 +13,27 @@
     </div>
     <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400 rtl:divide-x-reverse">
       <li class="w-full">
-        <button @click="changeTab(course.CourseID, 'stats')" :class="{'bg-gray-100 dark:bg-gray-600': course.activeTab === 'stats'}" class="inline-block w-full p-4 focus:outline-none">General</button>
+        <button @click="activeTab = 'stats'" :class="{'bg-gray-100 dark:bg-gray-600': activeTab === 'stats'}" class="inline-block w-full p-4 focus:outline-none">General</button>
       </li>
       <li class="w-full">
-        <button @click="changeTab(course.CourseID, 'about')" :class="{'bg-gray-100 dark:bg-gray-600': course.activeTab === 'about'}" class="inline-block w-full p-4 focus:outline-none">Milestones</button>
+        <button @click="activeTab = 'about'" :class="{'bg-gray-100 dark:bg-gray-600': activeTab === 'about'}" class="inline-block w-full p-4 focus:outline-none">Milestones</button>
       </li>
       <li class="w-full">
-        <button @click="changeTab(course.CourseID, 'faq')" :class="{'bg-gray-100 dark:bg-gray-600': course.activeTab === 'faq'}" class="inline-block w-full p-4 focus:outline-none">Statistics</button>
+        <button @click="activeTab = 'faq'" :class="{'bg-gray-100 dark:bg-gray-600': activeTab === 'faq'}" class="inline-block w-full p-4 focus:outline-none">Statistics</button>
       </li>
     </ul>
     <div id="fullWidthTabContent" class="border-t border-gray-200 dark:border-gray-600">
-      <div v-if="course.activeTab === 'stats'" class="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800">
+      <div v-if="activeTab === 'stats'" class="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800">
           <div class="lg:flex lg:items-center lg:justify-between p-4">
             <div class="min-w-0 flex-1">
-              <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">{{ course.CourseName }}</h2>
+              <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Building the Foundation</h2>
               <div class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
                 <div class="mt-2 flex items-center text-sm text-gray-500">
                   <svg class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M6 3.75A2.75 2.75 0 018.75 1h2.5A2.75 2.75 0 0114 3.75v.443c.572.055 1.14.122 1.706.2C17.053 4.582 18 5.75 18 7.07v3.469c0 1.126-.694 2.191-1.83 2.54-1.952.599-4.024.921-6.17.921s-4.219-.322-6.17-.921C2.694 12.73 2 11.665 2 10.539V7.07c0-1.321.947-2.489 2.294-2.676A41.047 41.047 0 016 4.193V3.75zm6.5 0v.325a41.622 41.622 0 00-5 0V3.75c0-.69.56-1.25 1.25-1.25h2.5c.69 0 1.25.56 1.25 1.25zM10 10a1 1 0 00-1 1v.01a1 1 0 001 1h.01a1 1 0 001-1V11a1 1 0 00-1-1H10z" clip-rule="evenodd" />
                     <path d="M3 15.055v-.684c.126.053.255.1.39.142 2.092.642 4.313.987 6.61.987 2.297 0 4.518-.345 6.61-.987.135-.041.264-.089.39-.142v.684c0 1.347-.985 2.53-2.363 2.686a41.454 41.454 0 01-9.274 0C3.985 17.585 3 16.402 3 15.055z" />
                   </svg>
-                  {{ course.Description }}
+                  PC Building Training Program
                 </div>
                 <div class="mt-2 flex items-center text-sm text-gray-500">
                   
@@ -43,38 +42,38 @@
                     <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
                   </svg>
   
-                  {{ course.CourseType }}
+                  VR and AR
                 </div>
                 <div class="mt-2 flex items-center text-sm text-gray-500">
                   <svg class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm11-4a1 1 0 1 0-2 0v4c0 .3.1.5.3.7l3 3a1 1 0 0 0 1.4-1.4L13 11.6V8Z" clip-rule="evenodd"/>
                   </svg>
-                  {{ course.EstimatedTime }}
-                  
+  
+                  2h &ndash; 3h
                 </div>
                 <div class="mt-2 flex items-center text-sm text-gray-500">
                   <svg class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z" clip-rule="evenodd" />
                   </svg>
-                  Closing on {{ formatDate(course.EndDate) }}
+                  Closing on January 9, 2020
                 </div>
               </div>
             </div>
             <div class="mt-5 flex lg:ml-4 lg:mt-0">
               
               <span class="ml-3 hidden sm:block">
-                <button @click="toggleDescription(course.CourseID)" 
+                <button @click="toggleDescription" 
     type="button" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                   
                   View Details
-                  <svg :class="{ 'clicked': course.descriptionToggle }" class="image -mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <svg :class="{ clicked }" class="image -mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
                   </svg>
                 </button>
               </span>
 
               <span class="sm:ml-3">
-                <button @click="togglePublish(course.CourseID)" type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                <button @click="togglePublish" type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                   
                   <svg class="-ml-0.5 mr-1.5 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd" d="M20.3 3.7c.2.2.4.4.4.7.3 1.8.7 5.2-.9 6.8A75.2 75.2 0 0 1 8.6 18a1 1 0 0 1-.6-.3l-.8-.9-1-.8a1 1 0 0 1 0-1.2c1-2.2 4.8-8.9 6.6-10.6 1.6-1.6 5-1.2 6.8-1l.7.5ZM5.4 7.6l4-.4-2.7 4.5-2.8-.3a1 1 0 0 1-.6-1.7l2.1-2.1Zm11.4 7-.4 4-2 2.1a1 1 0 0 1-1.8-.6l-.4-2.8 4.6-2.7Zm.8-6.2a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" clip-rule="evenodd"/>
@@ -113,11 +112,11 @@
             
           </div>
           
-          <div v-show="course.isPublished" class="w-full bg-white sm:p-3 dark:bg-gray-800 dark:border-gray-700">
+          <div v-show="isPublished" class="w-full bg-white sm:p-3 dark:bg-gray-800 dark:border-gray-700">
               
               <div class=" space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
                 <Transition name="bounce">
-                  <a v-if="course.isPublished" @click="openAFrameScene" href="#" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                  <a v-if="isPublished" @click="openAFrameScene" href="#" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                     <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-play" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><g>
                     <path fill="currentColor" d="M21.7,18H10.3C7.9,18,6,16.1,6,13.7V9.3C6,6.9,7.9,5,10.3,5h11.5C24.1,5,26,6.9,26,9.3v4.5C26,16.1,24.1,18,21.7,18z
                       M10.3,7C9,7,8,8,8,9.3v4.5C8,15,9,16,10.3,16h11.5c1.3,0,2.3-1,2.3-2.3V9.3C24,8,23,7,21.7,7H10.3z"/>
@@ -141,7 +140,7 @@
                   </a>
                 </Transition>
                 <Transition name="bounce">
-                  <a v-if="course.isPublished" href="#" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                  <a v-if="isPublished" href="#" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                       
                       <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="apple" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                         <path fill="currentColor" d="M29.3,22.8L29.3,22.8l-3.9-4.7C24.8,17.4,24,17,23.1,17H8.9c-0.9,0-1.7,0.4-2.3,1.1l-3.9,4.7C2.2,23.3,2,24,2,24.7V27
@@ -161,7 +160,7 @@
               </div>
           </div>
           <Transition :duration="550" name="nested">
-          <div v-show="course.descriptionToggle" class="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-2 lg:overflow-visible lg:px-0">
+          <div v-show="descriptionToggle" class="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-2 lg:overflow-visible lg:px-0">
       
       <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
         <div class="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
@@ -224,7 +223,7 @@
   </Transition>
         
         </div>
-        <div v-if="course.activeTab === 'about'" class="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800">
+        <div v-if="activeTab === 'about'" class="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800">
             <h2 class="mb-5 text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">Personal Milestones</h2>
             <!-- List -->
             <ul role="list" class="space-y-4 text-gray-500 dark:text-gray-400">
@@ -256,7 +255,7 @@
                 </li>
             </ul>
         </div>
-        <div v-if="course.activeTab === 'faq'" class="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800">
+        <div v-if="activeTab === 'faq'" class="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800">
             <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white dark:bg-gray-800 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
               <dl class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8">
                 <div class="flex flex-col items-center justify-center">
@@ -289,12 +288,10 @@
         </div>
     </div>
 </div>
-</div>
   </template>
   
   <script>
 import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/vue/24/outline'
-import axios from 'axios'
 
   export default {
     components: {
@@ -305,7 +302,6 @@ import axios from 'axios'
     name: 'TrainingPrograms',
     data() {
     return {
-      courses: [],
       clicked: false,
       isPublished: false, // Stav určujúci, či je obsah spustania zobrazený
       activeTab: 'stats', // Predvolená aktívna záložka
@@ -313,73 +309,27 @@ import axios from 'axios'
     };
   },
     methods: {
-      async fetchCourses() {
-      try {
-        const response = await axios.get('/api/courses');
-        console.log(response.data);
-        // Pridajte lokálne stavy pre každý kurz
-        this.courses = response.data.map(course => ({
-          ...course,
-          isPublished: false,
-          activeTab: 'stats',
-          descriptionToggle: false
-        }));
-      } catch (error) {
-        console.error('There was an error fetching the courses:', error);
-      }
-    },
-    formatDate(dateString) {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-US', options);
-  },
-
-  
+      
 
       openAFrameScene() {
         // Toto otvorí nové okno s A-Frame scénou
         window.open('/aframe-scene.html', '_blank');
       },
-      changeTab(courseId, newTab) {
-  console.log(`Changing tab for courseID: ${courseId} to ${newTab}`);
-  const index = this.courses.findIndex(course => course.CourseID === courseId);
-  if (index !== -1) {
-    const course = this.courses[index];
-    course.activeTab = newTab;
-    // Pre zabezpečenie reaktivity, použite Vue.set ak je to potrebné, alebo re-asign celý objekt v Vue 3
-    this.courses.splice(index, 1, { ...course });
-  } else {
-    console.log("Course not found");
-  }
-},
 
-togglePublish(courseId) {
-  const index = this.courses.findIndex(c => c.CourseID === courseId);
-  if (index !== -1) {
-    const course = this.courses[index];
-    course.isPublished = !course.isPublished;
-    // Nastaviť objekt kurz znova pre zabezpečenie reaktivity
-    this.courses.splice(index, 1, { ...course });
-  }
-},
-
-toggleDescription(courseId) {
-  const index = this.courses.findIndex(c => c.CourseID === courseId);
-  if (index !== -1) {
-    const course = this.courses[index];
-    course.descriptionToggle = !course.descriptionToggle;
-    // Nastaviť objekt kurz znova pre zabezpečenie reaktivity
-    this.courses.splice(index, 1, { ...course });
-  }
-},
+      changeTab(tab) {
+      this.activeTab = tab;
     },
 
+      togglePublish() {
+      this.isPublished = !this.isPublished; // Prepnúť stav zobrazenia
+      },
 
-    mounted() {
-    this.fetchCourses(); // Načítajte kurzy keď sa komponent načíta
+      toggleDescription() {
+      this.descriptionToggle = !this.descriptionToggle; // Prepnúť stav zobrazenia
+      this.clicked = !this.clicked;
+      },
+    }
   }
-  }
-  
-
   </script>
   
   <style>

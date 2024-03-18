@@ -1,16 +1,22 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 const sql = require('mssql');
 const users = require('./routes/users');
+const courses = require('./routes/courses');
+const milestonesRouter = require('./routes/milestones');
+const statisticsRouter = require('./routes/statistics');
+const userCoursesRouter = require('./routes/usercourses'); // Nový súbor pre routes
 
 const app = express();
+app.use(cookieParser()); // Použite cookie-parser middleware
 const PORT = 3000;
 
 // Database configuration
 const dbConfig = {
-    user: 'foo',
+    user: 'lolo', //foo pre notebook
     password: 'lolo',
-    server: '10.71.30.80',  // If you have a different instance name, replace 'SQLEXPRESS' accordingly
+    server: '192.168.0.15',  // If you have a different instance name, replace 'SQLEXPRESS' accordingly
     database: 'Login',
     options: {
         encrypt: true,  // Use true if you're on Azure
@@ -32,11 +38,16 @@ app.use(express.static(path.join(__dirname, '..', 'public')));  // Serve static 
 
 // Routes
 app.use('/api/users', users);  // Prefix all routes in userRoutes with '/user'
+app.use('/api/courses', courses);
+app.use('/api/milestones', milestonesRouter);
+app.use('/api/statistics', statisticsRouter);
+app.use('/api/usercourses', userCoursesRouter); // Pridanie nového routeru
 
 // Default route to serve your frontend app
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
+
 
 // Start the server
 app.listen(PORT, () => {
