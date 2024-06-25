@@ -25,7 +25,7 @@ router.get('/course/:courseId', async (req, res) => {
 });
 router.patch('/:milestoneId', async (req, res) => {
     const { milestoneId } = req.params;
-    const { isCompleted } = req.body; // Predpokladáme, že klient pošle nový stav míľnika v tele požiadavky
+    const { isCompleted } = req.body; 
     try {
         await Milestone.updateCompletionStatus(milestoneId, isCompleted);
         res.status(200).send('Stav míľnika bol úspešne aktualizovaný.');
@@ -34,7 +34,6 @@ router.patch('/:milestoneId', async (req, res) => {
         res.status(500).send('Server error pri aktualizácii stavu míľnika.');
     }
 });
-// Získanie míľnikov pre kurz
-// Tu by ste pridali logiku pre získanie všetkých míľnikov pre špecifický kurz
+
 
 module.exports = router;

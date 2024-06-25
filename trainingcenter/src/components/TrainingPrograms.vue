@@ -141,7 +141,7 @@
                   </a>
                 </Transition>
                 <Transition name="bounce">
-                  <a v-if="course.isPublished" href="#" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                  <a v-if="course.isPublished" @click="openARScene" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                       
                       <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="apple" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                         <path fill="currentColor" d="M29.3,22.8L29.3,22.8l-3.9-4.7C24.8,17.4,24,17,23.1,17H8.9c-0.9,0-1.7,0.4-2.3,1.1l-3.9,4.7C2.2,23.3,2,24,2,24.7V27
@@ -178,10 +178,13 @@
         <div class="outer lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div class="lg:pr-4">
             <div class="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
+              
               <ul role="list" class="mt-8 space-y-8 text-gray-600">
+                
+                
                 <li class="flex gap-x-3">
                   <CloudArrowUpIcon class="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
-                  <span><strong class="font-semibold text-gray-900">Preparing the Workspace.</strong> The preparation of a clean, safe, and efficiently organized workspace, fundamental for any technical work, will be taught.</span>
+                  <span><strong class="font-semibold text-gray-900">Preparing the Workspace. </strong> The preparation of a clean, safe, and efficiently organized workspace, fundamental for any technical work, will be taught.</span>
                 </li>
                 <li class="flex gap-x-3">
                   <LockClosedIcon class="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
@@ -228,31 +231,14 @@
             <h2 class="mb-5 text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">Personal Milestones</h2>
             <!-- List -->
             <ul role="list" class="space-y-4 text-gray-500 dark:text-gray-400">
-                <li class="flex space-x-2 rtl:space-x-reverse items-center">
-                    <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-600 dark:text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-                    </svg>
-                    
-  
-                    <span class="leading-tight">Preparing the Workspace</span>
-                </li>
-                <li class="flex space-x-2 rtl:space-x-reverse items-center">
-                  <svg class="flex-shrink-0 w-4 h-4 text-red-600 dark:text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                      <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clip-rule="evenodd"/>
-                    </svg>
-                    <span class="leading-tight">Installing the Processor (CPU)</span>
-                </li>
-                <li class="flex space-x-2 rtl:space-x-reverse items-center">
-                  <svg class="flex-shrink-0 w-4 h-4 text-red-600 dark:text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                      <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clip-rule="evenodd"/>
-                    </svg>
-                    <span class="leading-tight">Installing Memory (RAM)</span>
-                </li>
-                <li class="flex space-x-2 rtl:space-x-reverse items-center">
-                  <svg class="flex-shrink-0 w-4 h-4 text-red-600 dark:text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                      <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clip-rule="evenodd"/>
-                    </svg>
-                    <span class="leading-tight">Installing the Motherboard</span>
+              <li v-for="milestone in milestones" :key="milestone.MilestoneID" class="flex space-x-2 items-center">
+                  <svg v-if="milestone.IsCompleted" class="flex-shrink-0 w-3.5 h-3.5 text-green-600 dark:text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                  </svg>
+                  <svg v-else class="flex-shrink-0 w-4 h-4 text-red-600 dark:text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>{{ milestone.Title }}</span>
                 </li>
             </ul>
         </div>
@@ -306,6 +292,7 @@ import axios from 'axios'
     data() {
     return {
       courses: [],
+      milestones: [],
       clicked: false,
       isPublished: false, // Stav určujúci, či je obsah spustania zobrazený
       activeTab: 'stats', // Predvolená aktívna záložka
@@ -316,14 +303,19 @@ import axios from 'axios'
       async fetchCourses() {
       try {
         const response = await axios.get('/api/courses');
-        console.log(response.data);
-        // Pridajte lokálne stavy pre každý kurz
         this.courses = response.data.map(course => ({
           ...course,
           isPublished: false,
           activeTab: 'stats',
           descriptionToggle: false
         }));
+        for (let course of this.courses) {
+      const milestonesResponse = await axios.get(`/api/milestones/course/${course.CourseID}`);
+      course.milestones = milestonesResponse.data;
+      this.milestones.push(...milestonesResponse.data);
+    }
+    
+    
       } catch (error) {
         console.error('There was an error fetching the courses:', error);
       }
@@ -337,7 +329,11 @@ import axios from 'axios'
 
       openAFrameScene() {
         // Toto otvorí nové okno s A-Frame scénou
-        window.open('/aframe-scene.html', '_blank');
+        window.open('https://localhost:8080/aframe-scene.html', '_blank');
+      },
+      openARScene() {
+        // Toto otvorí nové okno s A-Frame scénou
+        window.open('https://localhost:8080/ARScene.html', '_blank');
       },
       changeTab(courseId, newTab) {
   console.log(`Changing tab for courseID: ${courseId} to ${newTab}`);
@@ -345,7 +341,6 @@ import axios from 'axios'
   if (index !== -1) {
     const course = this.courses[index];
     course.activeTab = newTab;
-    // Pre zabezpečenie reaktivity, použite Vue.set ak je to potrebné, alebo re-asign celý objekt v Vue 3
     this.courses.splice(index, 1, { ...course });
   } else {
     console.log("Course not found");

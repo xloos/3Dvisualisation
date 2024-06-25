@@ -8,16 +8,32 @@ class CourseStatistics {
             .input('courseId', sql.Int, courseId)
             .input('timeSpent', sql.Int, timeSpent)
             .input('attempts', sql.Int, attempts)
-            .query('INSERT INTO [Login].[dbo].[CourseStatistics] (UserID, CourseID, TimeSpent, Attempts) VALUES (@userId, @courseId, @timeSpent, @attempts)');
+            .input('firstOpen', sql.DateTime, new Date())
+            .input('isCompleted', sql.Int, 0)
+            .query('INSERT INTO [Login].[dbo].[CourseStatistics] (UserID, CourseID, TimeSpent, Attempts, FirstOpen, IsCompleted) VALUES (@userId, @courseId, @timeSpent, @attempts, @firstOpen, @isCompleted)');
     }
 
-    static async findByUserAndCourse(userId, courseId) {
+    static async findByUser(userId) {
         const pool = await sql.connect(/* your database connection config */);
         const result = await pool.request()
             .input('userId', sql.Int, userId)
-            .input('courseId', sql.Int, courseId)
-            .query('SELECT * FROM [Login].[dbo].[CourseStatistics] WHERE UserID = @userId AND CourseID = @courseId');
-        return result.recordset[0]; // Predpokladáme, že pre každú dvojicu používateľ-kurz bude len jeden záznam
+            .query(`
+                SELECT 
+                    cs.StatID,
+                    cs.UserID,
+                    cs.CourseID,
+                    cs.TimeSpent,
+                    cs.Attempts,
+                    cs.FirstOpen,
+                    cs.IsCompleted,
+                    c.CourseName,
+                    c.Description,
+                    c.EndDate
+                FROM [Login].[dbo].[CourseStatistics] cs
+                JOIN [Login].[dbo].[Courses] c ON cs.CourseID = c.CourseID
+                WHERE cs.UserID = @userId
+            `);
+        return result.recordset; // Vracia všetky štatistiky pre daného užívateľa
     }
 }
 

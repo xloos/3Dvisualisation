@@ -1,4 +1,6 @@
 const express = require('express');
+const https = require('https');
+const fs = require('fs'); // Pridanie pre čítanie súborov certifikátu
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const sql = require('mssql');
@@ -6,17 +8,24 @@ const users = require('./routes/users');
 const courses = require('./routes/courses');
 const milestonesRouter = require('./routes/milestones');
 const statisticsRouter = require('./routes/statistics');
-const userCoursesRouter = require('./routes/usercourses'); // Nový súbor pre routes
+const userCoursesRouter = require('./routes/usercourses');
 
 const app = express();
 app.use(cookieParser()); // Použite cookie-parser middleware
 const PORT = 3000;
 
+// SSL Certifikáty
+const privateKey = fs.readFileSync(path.join(__dirname, 'keys', 'key.pem'), 'utf8');
+const certificate = fs.readFileSync(path.join(__dirname, 'keys', 'cert.pem'), 'utf8');
+
+
+const credentials = { key: privateKey, cert: certificate };
+
 // Database configuration
 const dbConfig = {
     user: 'lolo', //foo pre notebook
     password: 'lolo',
-    server: '192.168.0.15',  // If you have a different instance name, replace 'SQLEXPRESS' accordingly
+    server: '192.168.0.23',  // If you have a different instance name, replace 'SQLEXPRESS' accordingly
     database: 'Login',
     options: {
         encrypt: true,  // Use true if you're on Azure
@@ -49,7 +58,7 @@ app.get('/', (req, res) => {
 });
 
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+// Zmena na HTTPS
+https.createServer(credentials, app).listen(PORT, () => {
+    console.log(`HTTPS server is running on https://localhost:${PORT}`);
 });

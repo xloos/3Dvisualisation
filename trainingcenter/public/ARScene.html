@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <title>AR Lock Model Test</title>
+</head>
+<body>
+    <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;'>
+        <a-assets>
+            <a-asset-item id="worklight-model" src="worklight.glb"></a-asset-item>
+        </a-assets>
+        <a-marker preset="hiro" id="baseMarker">
+            <a-entity id="worklightEntity" gltf-model="#worklight-model" position="0 0.5 0" scale="5 5 5" rotation="-90 0 0">
+            </a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const model = document.querySelector('#worklightEntity');
+            const marker = document.querySelector('#baseMarker');
+            let modelFixed = false;
+
+            model.addEventListener('click', function() {
+                if (!modelFixed) {
+                    const currentPosition = model.object3D.position.clone();
+                    const currentRotation = model.object3D.rotation.clone();
+                    const currentScale = model.object3D.scale.clone();
+                    
+                    // Detach model from marker
+                    const independentModel = document.createElement('a-entity');
+                    independentModel.setAttribute('gltf-model', '#worklight-model');
+                    independentModel.setAttribute('position', currentPosition);
+                    independentModel.setAttribute('rotation', {x: THREE.Math.radToDeg(currentRotation.x), y: THREE.Math.radToDeg(currentRotation.y), z: THREE.Math.radToDeg(currentRotation.z)});
+                    independentModel.setAttribute('scale', currentScale);
+                    document.querySelector('a-scene').appendChild(independentModel);
+
+                    // Hide the model in the marker
+                    model.setAttribute('visible', 'false');
+                    modelFixed = true;
+                }
+            });
+
+            marker.addEventListener('markerFound', function() {
+                if (!modelFixed) {
+                    model.setAttribute('visible', 'true');
+                }
+            });
+
+            marker.addEventListener('markerLost', function() {
+                if (!modelFixed) {
+                    model.setAttribute('visible', 'false');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

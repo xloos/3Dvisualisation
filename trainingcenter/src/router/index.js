@@ -6,6 +6,7 @@ import TrainingPrograms from '../components/TrainingPrograms.vue'
 import TrainingProgram1 from '../components/TrainingProgram1.vue'
 import TrainingProgram2 from '../components/TrainingProgram2.vue'
 import TrainingProgram3 from '../components/TrainingProgram3.vue'
+import ResultsAndStats from '../components/ResultsAndStats.vue'
 
 
 const routes = [
@@ -51,6 +52,12 @@ const routes = [
     path: '/trainingprogram3',
     name: 'Trainingprogram3',
     component: TrainingProgram3,
+  },
+
+  {
+    path: '/resultsandstats',
+    name: 'ResultsAndStats',
+    component: ResultsAndStats,
   },
 ];
 
