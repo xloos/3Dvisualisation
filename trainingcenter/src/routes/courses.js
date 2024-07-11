@@ -25,6 +25,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Tu by ste pridali ďalšie endpointy pre aktualizáciu a mazanie kurzov
+
 
 module.exports = router;

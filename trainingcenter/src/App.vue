@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="flex h-screen bg-gray-100 space-y-10">
+  <div id="app" class="flex h-full bg-gray-100 space-y-10">
     <!-- SideBar, zobrazený iba ak je užívateľ prihlásený -->
     <div v-if="isLoggedIn" class="sidebar flex-shrink-0" >
       <SideBar />

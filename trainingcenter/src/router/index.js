@@ -31,6 +31,7 @@ const routes = [
     path: '/trainingprograms',
     name: 'Trainingprograms',
     component: TrainingPrograms,
+    props: true, // umožňuje odosielanie parametrov ako prop
   },
   {
     path: '/resultsandstats',

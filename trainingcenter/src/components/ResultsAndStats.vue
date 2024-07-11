@@ -148,9 +148,12 @@
             <span v-else class="text-red-500">❌</span>
           </td>
           <td class="px-8 py-4">
+            <router-link :to="{ name: 'Trainingprograms'}">
+              {{ console.log(item.StatID) }}
             <button class="text-blue-800 dark:text-blue-500 ">
               <i class="fa-solid fa-square-caret-right custom-icon"></i>
             </button>
+          </router-link>
           </td>
         </tr>
       </tbody>
@@ -219,7 +222,7 @@ const formatDateTime = (dateTime) => {
 
 onMounted(async () => {
   try {
-    const response = await fetch('/api/statistics/user/1'); // Zmeňte '1' na skutočné userId, ak je to potrebné
+    const response = await fetch('/api/statistics/user/1'); 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
