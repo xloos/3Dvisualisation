@@ -112,11 +112,7 @@
                     To: "transform opacity-0 scale-95"
                 -->
                 
-                <div class="absolute right-0 z-10 -mr-1 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="mobile-menu-button" tabindex="-1">
-                  <!-- Active: "bg-blue-100", Not Active: "" -->
-                  <a href="#" class="block px-4 py-2 text-sm text-blue-700" role="menuitem" tabindex="-1" id="mobile-menu-item-0">Edit</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-blue-700" role="menuitem" tabindex="-1" id="mobile-menu-item-1">View</a>
-                </div>
+                
               </div>
             </div>
             
@@ -181,17 +177,11 @@
       
       <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
         <div class="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-          <div class="lg:pr-4">
-            <div class="lg:max-w-lg">
-              
-              <p class="mt-6 text-xl leading-8 text-blue-700">Welcome to "Building the Foundation," the first step in comprehensive skill development and education program for technical work. This section has been designed to lay a solid foundation for further education, with the necessary theoretical and practical knowledge being provided to prepare you for more advanced techniques and procedures.</p>
-            </div>
-          </div>
         </div>
-        <div class="inner -ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+        <div class="inner -ml-5 -mt-20 mr-5  lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
           <img class="" src="..\assets\pc_open.png" alt="" />
         </div>
-        <div class="outer lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+        <div class="outer lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div class="lg:pr-4">
             <div class="max-w-xl text-base leading-7 text-blue-700 lg:max-w-lg">
               
@@ -232,9 +222,6 @@
                     A foundation for the gradual building of more advanced technical skills will be established.
                   </li>
               </ul>
-
-              <h2 class="mt-16 text-2xl font-bold tracking-tight text-blue-900">Conclusion</h2>
-              <p class="mt-6">The "Building the Foundation" section, serving as your first step towards the mastery of technical work, provides a solid base upon which further skills can be built. With dedication and the correct approach to learning, the completion of this section with valuable skills and the confidence necessary to continue in your technical career can be expected.</p>
             </div>
           </div>
         </div>

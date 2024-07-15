@@ -3,8 +3,8 @@ import LoginForm from '../components/LoginForm.vue';
 import RegisterForm from '../components/RegisterForm.vue';
 import MainPage from '../components/MainPage.vue';
 import TrainingPrograms from '../components/TrainingPrograms.vue'
-
 import ResultsAndStats from '../components/ResultsAndStats.vue'
+
 
 
 const routes = [
