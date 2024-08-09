@@ -3,69 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+  <title>VR and PC Controls Example</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+
  
-  <script src="https://unpkg.com/aframe-extras/dist/aframe-extras.min.js"></script>
-  <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+
+  <!-- Include the DRACOLoader script -->
+  <script src="libs/draco/draco_decoder.js"></script>
 </head>
 <body>
-  
-    <a-scene >
+  <a-scene physics="gravity: -9.8; debug: true" vr-mode-ui="enabled: true">
+    <!-- Načítanie modelov a textúr skladu -->
+    <a-assets>
+      
+      <a-asset-item id="worklight" src="worklight.glb"></a-asset-item>
+      <a-asset-item id="motherboard" src="motherboard.glb"></a-asset-item>
+      <a-asset-item id="notepad" src="notepad.glb"></a-asset-item>
+      <a-asset-item id="screwdriver" src="screwdriver.glb"></a-asset-item>
+      <a-asset-item id="tool_trolleys" src="tool_trolleys.glb"></a-asset-item>
+      <a-asset-item id="lamp" src="lamp.glb"></a-asset-item>
+      
 
-      <!-- Načítanie modelov a textúr skladu -->
-      <a-assets>
-        <a-asset-item id="europalette-model" src="europallete.glb"></a-asset-item>
-        <a-asset-item id="boxes" src="boxes.gltf"></a-asset-item>
-        <a-asset-item id="switchboard" src="switchboard.gltf"></a-asset-item>
-        <a-asset-item id="hangar" src="hangar.glb"></a-asset-item>
-        <a-asset-item id="doors" src="doors.glb"></a-asset-item>
-        <a-asset-item id="worklight" src="worklight.glb"></a-asset-item>
-        <a-asset-item id="workbench" src="workbench.glb"></a-asset-item>
-        <a-asset-item id="desk" src="desk.glb"></a-asset-item>
+      <!-- Hand models -->
+      <a-asset-item id="hand-left" src="https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-left.gltf"></a-asset-item>
+      <a-asset-item id="hand-right" src="https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.gltf"></a-asset-item>
 
-        <a-asset-item id="cpu2" src="cpu2.glb"></a-asset-item>
-        <a-asset-item id="fancoolerpart1" src="fancoolerpart1.glb"></a-asset-item>
-        <a-asset-item id="fancoolerpart2" src="fancoolerpart2.glb"></a-asset-item>
-        <a-asset-item id="hdd" src="hdd.glb"></a-asset-item>
-        <a-asset-item id="motherboard2" src="motherboard2.glb"></a-asset-item>
-        <a-asset-item id="nodepad" src="notepad.glb"></a-asset-item>
-        <a-asset-item id="powersc2" src="powersc2.glb"></a-asset-item>
-        <a-asset-item id="powersc2cable" src="powersc2cable.glb"></a-asset-item>
-        <a-asset-item id="screwdriver" src="screwdriver.glb"></a-asset-item>
-        <a-asset-item id="secondpc" src="secondpc.glb"></a-asset-item>
-        <a-asset-item id="ssd" src="ssd.glb"></a-asset-item>
+      <!-- New object assets -->
+      
+    </a-assets>
+    <a-entity environment="preset: tron; groundColor: #445; skyColor: #88c;"></a-entity>
+    <!-- Kamera s navigačnými kontrolami a gravitáciou -->
+    <a-entity id="camera" camera look-controls wasd-controls position="0 1.6 0" dynamic-body>
+      <!-- Left hand -->
+      <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" 
+                gltf-model="#hand-left"></a-entity>
+      <!-- Right hand -->
+      <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" 
+                gltf-model="#hand-right"></a-entity>
+      <!-- Notepad in front of camera -->
+      <a-entity gltf-model="#notepad" position="-0.6 -0.25 -0.6" rotation="80 15 0" scale="0.4 0.4 0.4" dynamic-body></a-entity>
+    </a-entity>
+
+    <!-- Obrovská guľa ako pozadie -->
+    <a-entity geometry="primitive: sphere; radius: 5000" material="color: #000; side: double"></a-entity>
+
+    <!-- Neviditeľná podlaha -->
+    <a-plane position="0 0 0" rotation="-90 0 0" width="10000" height="10000" color="white" 
+             shadow="receive: true" static-body visible="false"></a-plane>
+
+    <!-- Modely a objekty -->
+    <!-- Model Worklight -->
+    <a-entity gltf-model="#lamp" shadow="cast: true; receive: true" position="2 4.5 -3.5" scale="2 2 2" rotation="0 0 0">
+      <a-light type="spot" castShadow="true" color="#FFF" intensity="1" distance="10" decay="1" 
+              position="-0.1 0.2 0" rotation="-90 0 0" angle="180">
+      </a-light>
+    </a-entity>
+
+    <!-- Model Worklight -->
+    <a-entity gltf-model="#lamp" shadow="cast: true; receive: true" position="-2 4.5 -3.5" scale="2 2 2" rotation="0 0 0">
+      <a-light type="spot" castShadow="true" color="#FFF" intensity="1" distance="10" decay="1" 
+              position="0 0.2 0" rotation="-90 0 0" angle="180">
+      </a-light>
+    </a-entity>
+
+    
+
+    <!-- Wrapper entity for setting the pivot point -->
+    <a-entity position="-5 0 -3" static-body>
+      <!-- Inner entity with the model -->
+      <a-entity id="pivot-wrapper" position="0 1 0" rotation="0 90 0">
         
-
-      </a-assets>
-
-      <!-- Kamera s navigačnými kontrolami -->
-      <a-entity camera look-controls wasd-controls="fly: true" position="0 2 -2" rotation="0 -90 0"></a-entity>
-
-      <!-- Podlaha -->
-      <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#7BC8A4"></a-plane>
-
-      <!-- Pozadie scény -->
-      <a-entity environment="preset: forest"></a-entity>
-
-      <!-- Modely a objekty... -->
-      
-      <!-- Model Workbench -->
-      <a-entity gltf-model="#workbench" position="0 0 -3" scale="1 1 1" rotation="0 0 0"></a-entity>
-
-      <!-- Model Desk -->
-      <a-entity gltf-model="#desk" position="2 0 -3" scale="1 1 1" rotation="0 0 0"></a-entity>
-      
-      <!-- Model Worklight -->
-      <a-entity gltf-model="#worklight" shadow="cast: true; receive: true" position="5 0 0" scale="3 3 3" rotation="0 -174 0">
-        <a-light type="spot" castShadow="true" color="#FFF" intensity="10" distance="30" decay="1" 
-                position="0 0.2 0" rotation="0 180 0" angle="50">
-        </a-light>
+        
+        <a-entity gltf-model="#tool_trolleys" position="0 0 0" scale="1 1 1" rotation="0 0 0" static-body></a-entity>
+        
       </a-entity>
-      
+    </a-entity>
 
-    </a-scene>
+    <a-entity gltf-model="#motherboard" position="-0.763 0.883 -2.390" scale="2 2 2" rotation="-90 0 0"></a-entity>
+    
+
+    
+
+    <!-- Pridanie ďalších svetiel pre lepšie osvetlenie -->
+    <a-light type="ambient" color="#333"></a-light>
+    <a-light type="directional" intensity="0.1" position="-1 1 0"></a-light>
+
+  </a-scene>
 </body>
 </html>

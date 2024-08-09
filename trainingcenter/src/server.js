@@ -25,7 +25,7 @@ const credentials = { key: privateKey, cert: certificate };
 const dbConfig = {
     user: 'lolo', //foo pre notebook
     password: 'lolo',
-    server: '192.168.0.23',  // If you have a different instance name, replace 'SQLEXPRESS' accordingly
+    server: '192.168.0.23',
     database: 'Login',
     options: {
         encrypt: true,  // Use true if you're on Azure
