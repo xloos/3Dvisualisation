@@ -6,44 +6,45 @@
   <title>VR and PC Controls Example</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cannon.js/0.6.2/cannon.min.js"></script>
   <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
-
- 
-
-  <!-- Include the DRACOLoader script -->
-  <script src="libs/draco/draco_decoder.js"></script>
 </head>
 <body>
+  
   <a-scene physics="gravity: -9.8; debug: true" vr-mode-ui="enabled: true">
     <!-- Načítanie modelov a textúr skladu -->
     <a-assets>
-      
-      <a-asset-item id="worklight" src="worklight.glb"></a-asset-item>
+      <a-asset-item id="zastrcka" src="zastrcka.glb"></a-asset-item>
+      <a-asset-item id="PScable" src="PScable.glb"></a-asset-item>
+      <a-asset-item id="krytnacpu" src="krytnacpu.glb"></a-asset-item>
+      <a-asset-item id="cpu" src="cpu.glb"></a-asset-item>
+      <a-asset-item id="ram" src="ram.glb"></a-asset-item>
+      <a-asset-item id="ssd" src="ssd.glb"></a-asset-item>
+      <a-asset-item id="srobzakladna" src="srobzakladna.glb"></a-asset-item>
       <a-asset-item id="motherboard" src="motherboard.glb"></a-asset-item>
+      <a-asset-item id="PS" src="PS.glb"></a-asset-item>
       <a-asset-item id="notepad" src="notepad.glb"></a-asset-item>
       <a-asset-item id="screwdriver" src="screwdriver.glb"></a-asset-item>
       <a-asset-item id="tool_trolleys" src="tool_trolleys.glb"></a-asset-item>
       <a-asset-item id="lamp" src="lamp.glb"></a-asset-item>
+      <a-asset-item id="woodencase" src="woodencase.glb"></a-asset-item>
+      <a-asset-item id="GPU" src="GPU.glb"></a-asset-item>
       
-
       <!-- Hand models -->
       <a-asset-item id="hand-left" src="https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-left.gltf"></a-asset-item>
       <a-asset-item id="hand-right" src="https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.gltf"></a-asset-item>
-
-      <!-- New object assets -->
-      
     </a-assets>
+    
     <a-entity environment="preset: tron; groundColor: #445; skyColor: #88c;"></a-entity>
+
     <!-- Kamera s navigačnými kontrolami a gravitáciou -->
-    <a-entity id="camera" camera look-controls wasd-controls position="0 1.6 0" dynamic-body>
-      <!-- Left hand -->
-      <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" 
-                gltf-model="#hand-left"></a-entity>
-      <!-- Right hand -->
-      <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" 
-                gltf-model="#hand-right"></a-entity>
-      <!-- Notepad in front of camera -->
+    <a-entity id="camera" camera look-controls wasd-controls="acceleration: 10" position="0 1.6 0" dynamic-body>
+      <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" gltf-model="#hand-left"></a-entity>
+      <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" gltf-model="#hand-right"></a-entity>
       <a-entity gltf-model="#notepad" position="-0.6 -0.25 -0.6" rotation="80 15 0" scale="0.4 0.4 0.4" dynamic-body></a-entity>
+    
+      <!-- Indikátor v strede obrazovky -->
+      <a-entity geometry="primitive: ring; radiusInner: 0.005; radiusOuter: 0.01" position="0 0 -1" material="color: #FFFFFF; shader: flat"></a-entity>
     </a-entity>
 
     <!-- Obrovská guľa ako pozadie -->
@@ -54,41 +55,104 @@
              shadow="receive: true" static-body visible="false"></a-plane>
 
     <!-- Modely a objekty -->
-    <!-- Model Worklight -->
     <a-entity gltf-model="#lamp" shadow="cast: true; receive: true" position="2 4.5 -3.5" scale="2 2 2" rotation="0 0 0">
-      <a-light type="spot" castShadow="true" color="#FFF" intensity="1" distance="10" decay="1" 
-              position="-0.1 0.2 0" rotation="-90 0 0" angle="180">
-      </a-light>
+      <a-light type="spot" castShadow="true" color="#FFF" intensity="0.5" distance="10" decay="1" 
+              position="-0.1 0.2 0" rotation="-90 0 0" angle="90"></a-light>
     </a-entity>
 
-    <!-- Model Worklight -->
     <a-entity gltf-model="#lamp" shadow="cast: true; receive: true" position="-2 4.5 -3.5" scale="2 2 2" rotation="0 0 0">
-      <a-light type="spot" castShadow="true" color="#FFF" intensity="1" distance="10" decay="1" 
-              position="0 0.2 0" rotation="-90 0 0" angle="180">
-      </a-light>
+      <a-light type="spot" castShadow="true" color="#FFF" intensity="0.5" distance="10" decay="1" 
+              position="0 0.2 0" rotation="-90 0 0" angle="90"></a-light>
     </a-entity>
 
-    
-
-    <!-- Wrapper entity for setting the pivot point -->
     <a-entity position="-5 0 -3" static-body>
-      <!-- Inner entity with the model -->
       <a-entity id="pivot-wrapper" position="0 1 0" rotation="0 90 0">
-        
-        
         <a-entity gltf-model="#tool_trolleys" position="0 0 0" scale="1 1 1" rotation="0 0 0" static-body></a-entity>
-        
       </a-entity>
     </a-entity>
 
-    <a-entity gltf-model="#motherboard" position="-0.763 0.883 -2.390" scale="2 2 2" rotation="-90 0 0"></a-entity>
-    
+    <!-- Modely a objekty s textami -->
+    <a-entity id="motherboard" gltf-model="#motherboard" position="1.044 0.984 -1.461" scale="2 2 2" rotation="-90 0 0" dynamic-body>
+      <a-text value="Motherboard" position="0 0.3 0" align="center" color="#FFFFFF" scale="1 1 1" visible="false"></a-text>
+    </a-entity>
 
-    
+    <a-entity id="PScable" gltf-model="#PScable" position="-1.965 1.483 -2.806" scale="2 2 2" rotation="180 -2.350 -16.4" dynamic-body soft-body>
+      <a-text value="PScable" position="0 0.3 0" align="center" color="#FFFFFF" scale="1 1 1" visible="false"></a-text>
+    </a-entity>
+
+    <a-entity id="PS" gltf-model="#PS" position="-0.924 0.851 -3.297" scale="2 2 2" rotation="0 90 0" dynamic-body>
+      <a-text value="Power Supply" position="0 0.3 0" align="center" color="#FFFFFF" scale="1 1 1" visible="false"></a-text>
+    </a-entity>
+
+    <a-entity id="ram" gltf-model="#ram" position="-2.307 0.526 -3.529" scale="2 2 2" rotation="0 90 90" dynamic-body>
+      <a-text value="RAM" position="0 0.3 0" align="center" color="#FFFFFF" scale="1 1 1" visible="false"></a-text>
+    </a-entity>
+
+    <a-entity id="krytnacpu" gltf-model="#krytnacpu" position="-0.062 1.687 -3.893" scale="2 2 2" rotation="90 0 0" dynamic-body>
+      <a-text value="CPU Cover" position="0 0.3 0" align="center" color="#FFFFFF" scale="1 1 1" visible="false"></a-text>
+    </a-entity>
+
+    <a-entity id="srobzakladna" gltf-model="#srobzakladna" position="0.298 0.471 -3.815" scale="2 2 2" rotation="0 90 0" dynamic-body>
+      <a-text value="Base Screw" position="0 0.3 0" align="center" color="#FFFFFF" scale="1 1 1" visible="false"></a-text>
+    </a-entity>
+
+    <a-entity id="ssd" gltf-model="#ssd" position="-2.546 1.674 -3.413" scale="2 2 2" rotation="0 90 90" dynamic-body>
+      <a-text value="SSD" position="0 0.3 0" align="center" color="#FFFFFF" scale="1 1 1" visible="false"></a-text>
+    </a-entity>
+
+    <a-entity id="woodencase" gltf-model="#woodencase" position="-1.118 1 -3.215" scale="2 2 2" rotation="0 0 0" dynamic-body>
+      <a-text value="Wooden Case" position="0 0.3 0" align="center" color="#FFFFFF" scale="1 1 1" visible="false"></a-text>
+    </a-entity>
+
+    <a-entity id="screwdriver" gltf-model="#screwdriver" position="0.649 1 -5.627" scale="2 2 2" rotation="0 0 0" dynamic-body>
+      <a-text value="Screwdriver" position="0 0.3 0" align="center" color="#FFFFFF" scale="1 1 1" visible="false"></a-text>
+    </a-entity>
+
+    <a-entity id="cpu" gltf-model="#cpu" position="-0.488 0.444 -2.111" scale="2 2 2" rotation="-90 0 0" dynamic-body>
+      <a-text value="CPU" position="0 0.3 0" align="center" color="#FFFFFF" scale="1 1 1" visible="false"></a-text>
+    </a-entity>
+
+    <a-entity id="zastrcka" gltf-model="#zastrcka" position="-5 0.136 -3.655" scale="2 2 2" rotation="0 53.230 0" dynamic-body>
+      <a-text value="Plug" position="0 0.3 0" align="center" color="#FFFFFF" scale="1 1 1" visible="false"></a-text>
+    </a-entity>
+
+    <a-entity id="GPU" gltf-model="#GPU" position="-1.926 1.498 -4.387" scale="2 2 2" rotation="180 90 0" dynamic-body>
+      <a-text value="GPU" position="0 0.3 0" align="center" color="#FFFFFF" scale="1 1 1" visible="false"></a-text>
+    </a-entity>
 
     <!-- Pridanie ďalších svetiel pre lepšie osvetlenie -->
-    <a-light type="ambient" color="#333"></a-light>
-    <a-light type="directional" intensity="0.1" position="-1 1 0"></a-light>
+    <a-light type="ambient" color="#888" intensity="0.5"></a-light>
+    <a-light type="directional" intensity="0.2" position="-1 1 0"></a-light>
+
+    <!-- Skript na zobrazovanie názvov objektov pri priblížení -->
+    <script>
+      AFRAME.registerComponent('show-name-on-hover', {
+        schema: {
+          distance: {type: 'number', default: 2}
+        },
+        init: function() {
+          this.cameraEl = document.querySelector('[camera]');
+        },
+        tick: function() {
+          var cameraPos = new THREE.Vector3();
+          var objectPos = new THREE.Vector3();
+          this.el.object3D.getWorldPosition(objectPos);
+          this.cameraEl.object3D.getWorldPosition(cameraPos);
+
+          var distance = cameraPos.distanceTo(objectPos);
+
+          if (distance < this.data.distance && this.el.children.length > 0) {
+            this.el.children[0].setAttribute('visible', 'true');
+          } else if (this.el.children.length > 0) {
+            this.el.children[0].setAttribute('visible', 'false');
+          }
+        }
+      });
+
+      document.querySelectorAll('a-entity[gltf-model]').forEach(function(el) {
+        el.setAttribute('show-name-on-hover', '');
+      });
+    </script>
 
   </a-scene>
 </body>
