@@ -13,7 +13,6 @@
   
   <a-scene physics="gravity: -9.8; debug: true" vr-mode-ui="enabled: true">
     <a-assets>
-      <!-- Asset Items Here -->
       <a-asset-item id="zastrcka" src="zastrcka.glb"></a-asset-item>
       <a-asset-item id="PScable" src="PScable.glb"></a-asset-item>
       <a-asset-item id="krytnacpu" src="krytnacpu.glb"></a-asset-item>
@@ -32,7 +31,7 @@
       
       <img id="check_box" src="check_box.png">
       <img id="check" src="check.png">
-      <img id="arrow" src="arrow.png">  <!-- Nový obrázok šípky -->
+      <img id="arrow" src="arrow.png">
 
       <!-- Hand models -->
       <a-asset-item id="hand-left" src="https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-left.gltf"></a-asset-item>
@@ -47,13 +46,48 @@
       <a-entity gltf-model="#notepad" position="-0.6 -0.25 -0.6" rotation="80 15 0" scale="0.4 0.4 0.4" dynamic-body>
         
         <!-- Text with custom font -->
+        <a-entity id="step-counter" text="value: ; color: red; shader: msdf; font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/justanotherhand/JustAnotherHand-Regular.json;" id="step1" position="0.221 0.091 -0.366" rotation="-90 0 0" width="1.5" align="left">
+          <a-plane color="white" width="0.1" height="0.1" position="-0.374 0.041 -0.000" rotation="0 0 0" scale="2.900 1.070 1.000"></a-plane>
+        </a-entity>
         
         <a-entity text="value: ; color: #FFFFFF; shader: msdf; font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/justanotherhand/JustAnotherHand-Regular.json;" id="step1" position="0.206 0.098 -0.094" rotation="-90 0 0" width="1.5" align="left"></a-entity>
-       
-        <a-entity text="value: ; color: #FFFFFF; shader: msdf; font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/justanotherhand/JustAnotherHand-Regular.json;" id="step2" position="0 0.15 0.1" width="1.5" align="left"></a-entity>
-        <a-entity text="value: ; color: #FFFFFF; shader: msdf; font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/justanotherhand/JustAnotherHand-Regular.json;" id="step3" position="0 0.05 0.1" width="1.5" align="left"></a-entity>
-        <a-image id="check1" src="#check_box" position="0.025 0.140 0.185" rotation="-90 0 0" scale="0.25 0.25 0.25">
-          <a-image src="#check" position="0 0 0" rotation="0 0 0" scale="0.8 0.8 0.8" visible="false"></a-image>
+        
+        <!-- Checkmark pre komponenty -->
+        <a-image id="check-ps" src="#check_box" position="0.025 0.140 0.185" rotation="-90 0 0" scale="0.25 0.25 0.25">
+          <!-- Check remains hidden or visible -->
+          <a-image id="check-ps-icon" src="#check" position="0 0 0" rotation="0 0 0" scale="0.8 0.8 0.8" visible="false"></a-image>
+        </a-image>
+
+        <a-image id="check-motherboard" src="#check_box" position="0.025 0.140 0.185" rotation="-90 0 0" scale="0.25 0.25 0.25">
+          <a-image id="check-motherboard-icon" src="#check" position="0 0 0" rotation="0 0 0" scale="0.8 0.8 0.8" visible="false"></a-image>
+        </a-image>
+
+        <a-image id="check-ram" src="#check_box" position="0.025 0.140 0.185" rotation="-90 0 0" scale="0.25 0.25 0.25">
+          <a-image id="check-ram-icon" src="#check" position="0 0 0" rotation="0 0 0" scale="0.8 0.8 0.8" visible="false"></a-image>
+        </a-image>
+
+        <a-image id="check-ssd" src="#check_box" position="0.025 0.140 0.185" rotation="-90 0 0" scale="0.25 0.25 0.25">
+          <a-image id="check-ssd-icon" src="#check" position="0 0 0" rotation="0 0 0" scale="0.8 0.8 0.8" visible="false"></a-image>
+        </a-image>
+
+        <a-image id="check-screwdriver" src="#check_box" position="0.025 0.140 0.185" rotation="-90 0 0" scale="0.25 0.25 0.25">
+          <a-image id="check-screwdriver-icon" src="#check" position="0 0 0" rotation="0 0 0" scale="0.8 0.8 0.8" visible="false"></a-image>
+        </a-image>
+
+        <a-image id="check-gpu" src="#check_box" position="0.025 0.140 0.185" rotation="-90 0 0" scale="0.25 0.25 0.25">
+          <a-image id="check-gpu-icon" src="#check" position="0 0 0" rotation="0 0 0" scale="0.8 0.8 0.8" visible="false"></a-image>
+        </a-image>
+
+        <a-image id="check-plug" src="#check_box" position="0.025 0.140 0.185" rotation="-90 0 0" scale="0.25 0.25 0.25">
+          <a-image id="check-plug-icon" src="#check" position="0 0 0" rotation="0 0 0" scale="0.8 0.8 0.8" visible="false"></a-image>
+        </a-image>
+
+        <a-image id="check-woodencase" src="#check_box" position="0.025 0.140 0.185" rotation="-90 0 0" scale="0.25 0.25 0.25">
+          <a-image id="check-woodencase-icon" src="#check" position="0 0 0" rotation="0 0 0" scale="0.8 0.8 0.8" visible="false"></a-image>
+        </a-image>
+
+        <a-image id="check-cpu" src="#check_box" position="0.025 0.140 0.185" rotation="-90 0 0" scale="0.25 0.25 0.25">
+          <a-image id="check-cpu-icon" src="#check" position="0 0 0" rotation="0 0 0" scale="0.8 0.8 0.8" visible="false"></a-image>
         </a-image>
       </a-entity>
     
@@ -78,61 +112,69 @@
     </a-entity>
 
     <!-- Modely a objekty s textami -->
-    <a-entity id="motherboard" gltf-model="#motherboard" position="-1.162 1.033 -3.121" scale="2 2 2" rotation="-90 0 0" dynamic-body>
+    <a-entity id="motherboard" gltf-model="#motherboard" position="-1.162 1.033 -3.121" scale="2 2 2" rotation="-90 0 0" dynamic-body
+      show-name-on-hover="distance: 2; checkmarkId: #check-motherboard-icon">
       <a-text value="Motherboard" position="0 0.193 0" align="center" color="#FFFFFF" scale="0.33 0.33 0.33" face-camera 
               font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-text>
     </a-entity>
 
-    <a-entity id="PScable" gltf-model="#PScable" position="-1.965 1.483 -2.806" scale="2 2 2" rotation="180 -2.350 -16.4" dynamic-body soft-body>
-      
-    </a-entity>
+    <a-entity id="PScable" gltf-model="#PScable" position="-1.965 1.483 -2.806" scale="2 2 2" rotation="180 -2.350 -16.4" dynamic-body></a-entity>
 
-    <a-entity id="PS" gltf-model="#PS" position="-2.466 1.103 -2.910" scale="2 2 2" rotation="0 90 0" dynamic-body>
+    <a-entity id="PS" gltf-model="#PS" position="-2.466 1.103 -2.910" scale="2 2 2" rotation="0 90 0" dynamic-body
+      show-name-on-hover="distance: 2; checkmarkId: #check-ps-icon">
       <a-text value="Power Supply" position="0 0.119 0" align="center" color="#FFFFFF" scale="0.1 0.1 0.1" face-camera
               font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-text>
     </a-entity>
 
-    <a-entity id="ram" gltf-model="#ram" position="-1.852 0.999 -2.890" scale="2 2 2" rotation="0 90 90" dynamic-body>
+    <a-entity id="ram" gltf-model="#ram" position="-1.852 0.999 -2.890" scale="2 2 2" rotation="0 90 90" dynamic-body
+      show-name-on-hover="distance: 2; checkmarkId: #check-ram-icon">
       <a-text value="RAM" position="0 -0.072 0" align="center" color="#FFFFFF" scale="0.05 0.05 0.05" face-camera
-              font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-entity>
+              font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-text>
+    </a-entity>
 
-    <a-entity id="krytnacpu" gltf-model="#krytnacpu" position="-0.062 1.687 -3.893" scale="2 2 2" rotation="90 0 0" dynamic-body>
-      </a-entity>
-
-    <a-entity id="srobzakladna" gltf-model="#srobzakladna" position="0.298 0.471 -3.815" scale="2 2 2" rotation="0 90 0" dynamic-body>
-      <a-text value="Base Screw" position="0 0.3 0" align="center" color="#FFFFFF" scale="0.33 0.33 0.33" face-camera
-              font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-entity>
-
-    <a-entity id="ssd" gltf-model="#ssd" position="-1.742 0.994 -2.838" scale="2 2 2" rotation="0 90 90" dynamic-body>
+    <a-entity id="ssd" gltf-model="#ssd" position="-1.742 0.994 -2.838" scale="2 2 2" rotation="0 90 90" dynamic-body
+      show-name-on-hover="distance: 2; checkmarkId: #check-ssd-icon">
       <a-text value="SSD" position="0 -0.063 0" align="center" color="#FFFFFF" scale="0.05 0.05 0.05" face-camera
-              font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-entity>
+              font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-text>
+    </a-entity>
 
-    <a-entity id="woodencase" gltf-model="#woodencase" position="1.482 1.480 -3.145" scale="2 2 2" rotation="0 0 0" dynamic-body>
-      <a-text value="Wooden Case" position="0 0.3 0" align="center" color="#FFFFFF" scale="0.33 0.33 0.33" face-camera
-              font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-entity>
-
-    <a-entity id="screwdriver" gltf-model="#screwdriver" position="0.649 1.012 -3.197" scale="2 2 2" rotation="0 0 0" dynamic-body>
+    <a-entity id="screwdriver" gltf-model="#screwdriver" position="0.649 1.012 -3.197" scale="2 2 2" rotation="0 0 0" dynamic-body
+      show-name-on-hover="distance: 2; checkmarkId: #check-screwdriver-icon">
       <a-text value="Screwdriver" position="0 0.03 0" align="center" color="#FFFFFF" scale="0.1 0.1 0.1" face-camera
-              font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-entity>
+              font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-text>
+    </a-entity>
 
-    <a-entity id="cpu" gltf-model="#cpu" position="-1.598 0.991 -2.831" scale="2 2 2" rotation="-90 0 0" dynamic-body>
-      <a-text value="CPU" position="0 0.053 0" align="center" color="#FFFFFF" scale="0.05 0.05 0.05" face-camera
-              font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-entity>
-
-    <a-entity id="zastrcka" gltf-model="#zastrcka" position="-5 0.136 -3.655" scale="2 2 2" rotation="0 53.230 0" dynamic-body>
-      <a-text value="Plug" position="0 0.3 0" align="center" color="#FFFFFF" scale="0.33 0.33 0.33" face-camera
-              font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-entity>
-
-    <a-entity id="GPU" gltf-model="#GPU" position="-2.100 1.025 -3.037" scale="2 2 2" rotation="180 90 0" dynamic-body>
+    <a-entity id="GPU" gltf-model="#GPU" position="-2.100 1.025 -3.037" scale="2 2 2" rotation="180 90 0" dynamic-body
+      show-name-on-hover="distance: 2; checkmarkId: #check-gpu-icon">
       <a-text value="GPU" position="0.028 -0.086 -0.027" align="center" color="#FFFFFF" scale="0.2 0.2 0.2" face-camera
-              font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-entity>
+              font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-text>
+    </a-entity>
 
-    <!-- Pridanie ďalších svetiel pre lepšie osvetlenie -->
+    <a-entity id="zastrcka" gltf-model="#zastrcka" position="-5 0.136 -3.655" scale="2 2 2" rotation="0 53.230 0" dynamic-body
+      show-name-on-hover="distance: 2; checkmarkId: #check-plug-icon">
+      <a-text value="Plug" position="0 0.3 0" align="center" color="#FFFFFF" scale="0.33 0.33 0.33" face-camera
+              font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-text>
+    </a-entity>
+
+    <a-entity id="woodencase" gltf-model="#woodencase" position="1.482 1.480 -3.145" scale="2 2 2" rotation="0 0 0" dynamic-body
+      show-name-on-hover="distance: 2; checkmarkId: #check-woodencase-icon">
+      <a-text value="Wooden Case" position="0 0.3 0" align="center" color="#FFFFFF" scale="0.33 0.33 0.33" face-camera
+              font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-text>
+    </a-entity>
+
+    <a-entity id="cpu" gltf-model="#cpu" position="-1.598 0.991 -2.831" scale="2 2 2" rotation="-90 0 0" dynamic-body
+      show-name-on-hover="distance: 2; checkmarkId: #check-cpu-icon">
+      <a-text value="CPU" position="0 0.053 0" align="center" color="#FFFFFF" scale="0.05 0.05 0.05" face-camera
+              font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json" shader="msdf" outline-width="0.05" outline-color="#000"></a-text>
+    </a-entity>
+
+    <!-- Additional Lighting -->
     <a-light type="ambient" color="#888" intensity="0.5"></a-light>
     <a-light type="directional" intensity="0.2" position="-1 1 0"></a-light>
 
-    <!-- Skript na zobrazovanie názvov objektov pri priblížení a spracovanie krokov -->
+    <!-- Script for handling text, steps, and animations -->
     <script>
+
       AFRAME.registerComponent('face-camera', {
         tick: function () {
           var cameraEl = document.querySelector('[camera]');
@@ -143,10 +185,12 @@
 
       AFRAME.registerComponent('show-name-on-hover', {
         schema: {
-          distance: {type: 'number', default: 2}
+          distance: {type: 'number', default: 2},
+          checkmarkId: {type: 'string'}  // Parameter pre checkmark
         },
         init: function() {
           this.cameraEl = document.querySelector('[camera]');
+          this.checkmarkEl = document.querySelector(this.data.checkmarkId);
         },
         tick: function() {
           var cameraPos = new THREE.Vector3();
@@ -157,145 +201,72 @@
           var distance = cameraPos.distanceTo(objectPos);
 
           if (distance < this.data.distance && this.el.children.length > 0) {
-            this.el.children[0].setAttribute('visible', 'true');
+            this.el.children[0].setAttribute('visible', 'true');  // Zobrazenie názvu
+            if (this.checkmarkEl) {
+              this.checkmarkEl.setAttribute('visible', 'true');  // Zobrazenie checkmarku
+            }
           } else if (this.el.children.length > 0) {
-            this.el.children[0].setAttribute('visible', 'false');
+            this.el.children[0].setAttribute('visible', 'false');  // Skrytie názvu
+            if (this.checkmarkEl) {
+              this.checkmarkEl.setAttribute('visible', 'false');  // Skrytie checkmarku
+            }
           }
         }
       });
 
-      document.querySelectorAll('a-entity[gltf-model]').forEach(function(el) {
-        el.setAttribute('show-name-on-hover', '');
-      });
-
       // Texty pre jednotlivé kroky
       const steps = [
-        "1. Clean the workspace: Before starting the assembly, ensure that your workspace is clean and dust-free.",
-        "2. Organize tools: Make sure you have all the necessary tools (screwdriver, tweezers, etc.) and components ready.",
-        "3. Safety: Check that the space is well-lit and you have access to grounding to prevent static electricity.",
-        "4. Place the motherboard: Carefully place the motherboard into the case.",
-        "5. Install the CPU: Insert the CPU into the motherboard socket and secure it.",
-        "6. Add RAM: Insert the RAM modules into the motherboard slots.",
-        "7. Mount the PSU: Install the power supply unit into the case.",
-        "8. Connect cables: Connect all necessary cables from the PSU to the motherboard, CPU, and other components."
+        "1. Familiarize yourself with the workspace: Look around and explore the CPU, motherboard, RAM, SSD, power supply, and tools.",
+        "2. Pick up the CPU: Find the CPU on the table and pick it up.",
+        "3. Install the CPU into the motherboard: Align it carefully and place it into the socket.",
+        "4. Secure the CPU: Close the latch on the motherboard socket to secure the CPU.",
+        "5. Install the CPU cooler: Pick up the cooler and mount it on top of the CPU.",
+        "6. Pick up the RAM: Grab the RAM modules from the workspace.",
+        "7. Install the RAM into the motherboard slots: Press them down until they click into place.",
+        "8. Pick up the SSD: Find the SSD on the table and grab it.",
+        "9. Install the SSD: Insert the SSD into its slot on the motherboard.",
+        "10. Pick up the Power Supply: Grab the PSU from the workspace.",
+        "11. Connect the power cables: Attach the power cables to the motherboard and CPU.",
+        "12. Mount the motherboard on the stand: Place the motherboard into the case on the stand.",
+        "13. Secure the motherboard: Use screws to fix the motherboard to the stand.",
+        "14. Ready for the first power-on test: All components are connected. Time to test the system!"
       ];
 
       let currentStep = 0;
-      const maxLineLength = 30;  // Definovanie maxLineLength
+      const maxLineLength = 30;
 
       function updateStep() {
         if (currentStep < steps.length) {
-          typeText(steps[currentStep], '#step1', 50);
-          
-          resetEffects();  // Najprv resetovať všetky efekty
-
-          // Pridajte vizuálne zmeny pre každý krok
-          if (currentStep === 0) {
-            // Krok 1: Žiadne zvýraznenie
-          }
-          if (currentStep === 1) {
-            // Krok 2: Žiadne zvýraznenie
-          }
-          if (currentStep === 2) {
-            // Krok 3: Žiadne zvýraznenie
-          }
-          if (currentStep === 3) {
-            highlightObject('#motherboard');
-          }
-          if (currentStep === 4) {
-            highlightObject('#cpu');
-          }
-          if (currentStep === 5) {
-            highlightObject('#ram');
-          }
-          if (currentStep === 6) {
-            highlightObject('#PS');
-          }
-          if (currentStep === 7) {
-            highlightObject('#PScable');
-          }
-
+          typeText(steps[currentStep], '#step1', 50, function() {});
+          updateStepCounter(currentStep + 1);
           currentStep++;
         }
       }
 
       function previousStep() {
         if (currentStep > 1) {
-          currentStep--;  // Znížime krok, aby sme sa vrátili späť
-          typeText(steps[currentStep - 1], '#step1', 50);  // Zobrazí sa text predchádzajúceho kroku
-
-          resetEffects();  // Najprv resetovať všetky efekty
-
-          // Pridajte zmeny pre návrat k predchádzajúcemu kroku
-          if (currentStep === 3) {
-            highlightObject('#motherboard');
-          }
-          if (currentStep === 4) {
-            highlightObject('#cpu');
-          }
-          if (currentStep === 5) {
-            highlightObject('#ram');
-          }
-          if (currentStep === 6) {
-            highlightObject('#PS');
-          }
-          if (currentStep === 7) {
-            highlightObject('#PScable');
-          }
+          currentStep--;
+          typeText(steps[currentStep - 1], '#step1', 50, function() {});
+          updateStepCounter(currentStep);
         }
       }
 
-      function resetEffects() {
-        // Resetuje efekty pre všetky objekty
-        const components = ['#motherboard', '#cpu', '#ram', '#PS', '#PScable'];
-        components.forEach(id => {
-          // Odstránenie animácie
-          document.querySelector(id).removeAttribute('animation__scale');
-
-          // Odstránenie šípky
-          let arrow = document.querySelector(id + ' > a-image[src="#arrow"]');
-          if (arrow) {
-            arrow.parentNode.removeChild(arrow);
-          }
-        });
-      }
-
-      function highlightObject(objectId) {
-        // Pridanie pulzujúcej animácie (mierne zväčšovanie a zmenšovanie)
-        document.querySelector(objectId).setAttribute('animation__scale', {
-          property: 'scale',
-          dir: 'alternate',
-          dur: 1000,
-          loop: true,
-          to: '1.2 1.2 1.2'
-        });
-
-        // Pridanie šípky nad objekt
-        let arrow = document.createElement('a-image');
-        arrow.setAttribute('src', '#arrow');
-        arrow.setAttribute('position', '0 1 0'); // Umiestnenie nad objektom
-        arrow.setAttribute('scale', '0.5 0.5 0.5');
-        arrow.setAttribute('look-at', '#camera'); // Umožňuje šípke otáčať sa za kamerou
-        document.querySelector(objectId).appendChild(arrow);
-      }
-
-      // Funkcia na simuláciu efektu písania
-      function typeText(text, elementId, speed) {
+      function typeText(text, elementId, speed, callback) {
         let wrappedText = wrapText(text, maxLineLength);
         let i = 0;
         const element = document.querySelector(elementId);
-        element.setAttribute('text', 'value', ''); // Nastavenie prázdneho textu na začiatku
+        element.setAttribute('text', 'value', ''); // Clear the text at the start
         const interval = setInterval(() => {
           if (i < wrappedText.length) {
             element.setAttribute('text', 'value', element.getAttribute('text').value + wrappedText.charAt(i));
             i++;
           } else {
             clearInterval(interval);
+            if (callback) callback();  // Call the callback after typing
           }
         }, speed);
       }
 
-      // Funkcia na rozdelenie textu na viacero riadkov
       function wrapText(text, maxLineLength) {
         const words = text.split(' ');
         let lines = [];
@@ -314,7 +285,11 @@
         return lines.join('\n');
       }
 
-      // Událosť na počúvanie stlačenia klávesy "P" alebo "O"
+      function updateStepCounter(stepNumber) {
+        const stepCounter = document.querySelector('#step-counter');
+        stepCounter.setAttribute('text', 'value', 'Step ' + stepNumber + ' of ' + steps.length);
+      }
+
       document.addEventListener('keydown', function(event) {
         if (event.key.toLowerCase() === 'p') {
           updateStep();
@@ -323,7 +298,6 @@
         }
       });
 
-      // Inicializácia prvého kroku
       updateStep();
 
     </script>
