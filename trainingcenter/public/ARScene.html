@@ -1,62 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <title>AR Lock Model Test</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PC Building Training Program - AR Mode with Marker</title>
+
+  <!-- A-Frame Library -->
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+  <!-- AR.js Library for AR functionality -->
+  <script src="https://aframe.io/releases/1.2.0/aframe-ar.min.js"></script>
+
+  <!-- Physics and Other Dependencies -->
+  <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cannon.js/0.6.2/cannon.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
 </head>
 <body>
-    <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;'>
-        <a-assets>
-            <a-asset-item id="worklight-model" src="worklight.glb"></a-asset-item>
-        </a-assets>
-        <a-marker preset="hiro" id="baseMarker">
-            <a-entity id="worklightEntity" gltf-model="#worklight-model" position="0 0.5 0" scale="5 5 5" rotation="-90 0 0">
-            </a-entity>
-        </a-marker>
-        <a-entity camera></a-entity>
-    </a-scene>
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;" physics="gravity: -9.8; debug: true" vr-mode-ui="enabled: false">
+    
+    <!-- Asset Management -->
+    <a-assets>
+      <!-- GLB Models for components -->
+      <a-asset-item id="zastrcka" src="zastrcka.glb"></a-asset-item>
+      <a-asset-item id="PScable" src="PScable.glb"></a-asset-item>
+      <a-asset-item id="krytnacpu" src="krytnacpu.glb"></a-asset-item>
+      <a-asset-item id="cpu" src="cpu.glb"></a-asset-item>
+      <a-asset-item id="ram" src="ram.glb"></a-asset-item>
+      <a-asset-item id="ssd" src="ssd.glb"></a-asset-item>
+      <a-asset-item id="srobzakladna" src="srobzakladna.glb"></a-asset-item>
+      <a-asset-item id="motherboard" src="motherboard.glb"></a-asset-item>
+      <a-asset-item id="PS" src="PS.glb"></a-asset-item>
+      <a-asset-item id="notepad" src="notepad.glb"></a-asset-item>
+      <a-asset-item id="screwdriver" src="screwdriver.glb"></a-asset-item>
+      <a-asset-item id="tool_trolleys" src="tool_trolleys.glb"></a-asset-item>
+      <a-asset-item id="lamp" src="lamp.glb"></a-asset-item>
+      <a-asset-item id="woodencase" src="woodencase.glb"></a-asset-item>
+      <a-asset-item id="GPU" src="GPU.glb"></a-asset-item>
 
+      <!-- Images for UI elements -->
+      <img id="check_box" src="check_box.png">
+      <img id="check" src="check.png">
+      <img id="arrow" src="arrow.png">
+      <img id="completed" src="completed.png">
+    </a-assets>
+
+    <!-- All content wrapped in a marker -->
+    <a-marker preset="hiro">
+
+      <!-- Environment -->
+      <a-entity environment="preset: tron; groundColor: #445; skyColor: #88c;"></a-entity>
+
+      <!-- Object Interactions -->
+      <a-entity id="cpu_hand" gltf-model="#cpu" position="2.416 0.952 0.189" scale="5 5 5" rotation="35.370 51.543 -114.815" dynamic-body visible="false"></a-entity>
+      <a-entity id="ram_hand" gltf-model="#ram" position="2.409 1.042 0.053" scale="5 5 5" rotation="-29.812 76.658 95.281" dynamic-body visible="false"></a-entity>
+      <a-entity id="ssd_hand" gltf-model="#ssd" position="2.409 1.076 0.174" scale="5 5 5" rotation="-40.895 81.216 93.280" dynamic-body visible="false"></a-entity>
+
+      <!-- Motherboard Model -->
+      <a-entity id="motherboard-wrapper_hand" position="2.803 9.417 6.067" rotation="-58.909 -50.529 55.040" scale="3 3 3" visible="false">
+        <a-entity id="wmotherboard_hand" gltf-model="#motherboard" position="-1.162 1.033 -3.121" scale="2 2 2" rotation="-90 0 0" dynamic-body></a-entity>
+      </a-entity>
+
+      <!-- Checkmarks for Components -->
+      <a-image id="check-ps" src="#check_box" position="0.025 0.140 0.185" rotation="-90 0 0" scale="0.25 0.25 0.25">
+        <a-image id="check-ps-icon" src="#check" position="0 0 0" rotation="0 0 0" scale="0.8 0.8 0.8" visible="false"></a-image>
+      </a-image>
+      <a-image id="check-motherboard" src="#check_box" position="0.025 0.140 0.185" rotation="-90 0 0" scale="0.25 0.25 0.25">
+        <a-image id="check-motherboard-icon" src="#check" position="0 0 0" rotation="0 0 0" scale="0.8 0.8 0.8" visible="false"></a-image>
+      </a-image>
+      <a-image id="check-ram" src="#check_box" position="0.025 0.140 0.185" rotation="-90 0 0" scale="0.25 0.25 0.25">
+        <a-image id="check-ram-icon" src="#check" position="0 0 0" rotation="0 0 0" scale="0.8 0.8 0.8" visible="false"></a-image>
+      </a-image>
+      <a-image id="check-ssd" src="#check_box" position="0.025 0.140 0.185" rotation="-90 0 0" scale="0.25 0.25 0.25">
+        <a-image id="check-ssd-icon" src="#check" position="0 0 0" rotation="0 0 0" scale="0.8 0.8 0.8" visible="false"></a-image>
+      </a-image>
+
+      <!-- Objects and Lights -->
+      <a-entity gltf-model="#lamp" shadow="cast: true; receive: true" position="2 4.5 -3.5" scale="2 2 2" rotation="0 0 0">
+        <a-light type="spot" castShadow="true" color="#FFF" intensity="0.5" distance="10" decay="1" 
+                position="-0.1 0.2 0" rotation="-90 0 0" angle="90"></a-light>
+      </a-entity>
+
+      <a-entity gltf-model="#lamp" shadow="cast: true; receive: true" position="-2 4.5 -3.5" scale="2 2 2" rotation="0 0 0">
+        <a-light type="spot" castShadow="true" color="#FFF" intensity="0.5" distance="10" decay="1" 
+                position="0 0.2 0" rotation="-90 0 0" angle="90"></a-light>
+      </a-entity>
+
+      <!-- CPU Entity -->
+      <a-entity id="cpu" gltf-model="#cpu" position="-1.598 0.991 -2.831" scale="2 2 2" rotation="-90 0 0" dynamic-body visible="true"
+        show-name-on-hover="distance: 2; checkmarkId: #check-cpu-icon"></a-entity>
+    
+    </a-marker>
+
+    <!-- AR Camera -->
+    <a-entity camera></a-entity>
+
+    <!-- Script for handling AR interactions -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const model = document.querySelector('#worklightEntity');
-            const marker = document.querySelector('#baseMarker');
-            let modelFixed = false;
+      AFRAME.registerComponent('show-name-on-hover', {
+        schema: {
+          distance: { type: 'number', default: 2 },
+          checkmarkId: { type: 'string' }
+        },
+        init: function () {
+          this.cameraEl = document.querySelector('[camera]');
+          this.checkmarkEl = document.querySelector(this.data.checkmarkId);
 
-            model.addEventListener('click', function() {
-                if (!modelFixed) {
-                    const currentPosition = model.object3D.position.clone();
-                    const currentRotation = model.object3D.rotation.clone();
-                    const currentScale = model.object3D.scale.clone();
-                    
-                    // Detach model from marker
-                    const independentModel = document.createElement('a-entity');
-                    independentModel.setAttribute('gltf-model', '#worklight-model');
-                    independentModel.setAttribute('position', currentPosition);
-                    independentModel.setAttribute('rotation', {x: THREE.Math.radToDeg(currentRotation.x), y: THREE.Math.radToDeg(currentRotation.y), z: THREE.Math.radToDeg(currentRotation.z)});
-                    independentModel.setAttribute('scale', currentScale);
-                    document.querySelector('a-scene').appendChild(independentModel);
+          document.addEventListener('keydown', (event) => {
+            if (event.key.toLowerCase() === 'e') {
+              if (this.el.id === 'cpu' && currentStep === 2) {
+                this.pickUpCPU();
+              } else if (this.el.id === 'motherboard' && currentStep === 3) {
+                this.installCPU();
+              } else if (this.el.id === 'ram' && currentStep === 4 ) {
+                this.secureCPU();
+              }
+            }
+          });
+        },
 
-                    // Hide the model in the marker
-                    model.setAttribute('visible', 'false');
-                    modelFixed = true;
-                }
-            });
+        pickUpCPU: function () {
+          if (!this.stepTriggered) {
+            this.stepTriggered = true;
 
-            marker.addEventListener('markerFound', function() {
-                if (!modelFixed) {
-                    model.setAttribute('visible', 'true');
-                }
-            });
+            const cpu = document.querySelector('#cpu');
+            cpu.setAttribute('visible', 'false');
+            const cpuHand = document.querySelector('#cpu_hand');
+            cpuHand.setAttribute('visible', 'true');
 
-            marker.addEventListener('markerLost', function() {
-                if (!modelFixed) {
-                    model.setAttribute('visible', 'false');
-                }
-            });
+            this.showCheckmark();
+
+            setTimeout(() => {
+              if (currentStep === 2) {
+                this.hideCheckmark();
+                updateStep();
+              }
+            }, 5000);
+          }
+        },
+
+        installCPU: function () {
+          if (!this.stepTriggered) {
+            this.stepTriggered = true;
+
+            const cpuHand = document.querySelector('#cpu_hand');
+            cpuHand.setAttribute('visible', 'false');
+            const cpuMotherboard = document.querySelector('#cpu_motherboard');
+            cpuMotherboard.setAttribute('visible', 'true');
+
+            this.showCheckmark();
+
+            setTimeout(() => {
+              if (currentStep === 3) {
+                this.hideCheckmark();
+                updateStep();
+              }
+            }, 5000);
+          }
+        },
+
+        secureCPU: function () {
+          if (!this.stepTriggered && currentStep === 4) {
+            this.stepTriggered = true;
+
+            const krytnacpu1 = document.querySelector('#krytnacpu1');
+            const krytnacpu2 = document.querySelector('#krytnacpu2');
+            krytnacpu1.setAttribute('visible', 'false');
+            krytnacpu2.setAttribute('visible', 'true');
+
+            this.showCheckmark();
+
+            setTimeout(() => {
+              if (currentStep === 4) {
+                this.hideCheckmark();
+                updateStep();
+              }
+            }, 5000);
+          }
+        },
+
+        showCheckmark: function () {
+          if (this.checkmarkEl) {
+            this.checkmarkEl.setAttribute('visible', 'true');
+          }
+        },
+
+        hideCheckmark: function () {
+          if (this.checkmarkEl) {
+            this.checkmarkEl.setAttribute('visible', 'false');
+          }
+        }
+      });
+
+      const steps = [
+        "1. Explore your workspace: Identify the CPU, motherboard, RAM, SSD, power supply, and tools for assembly.",
+        "2. Pick up the CPU: Find the CPU on the table and pick it up.",
+        "3. Install the CPU into the motherboard: Align it carefully and place it into the socket.",
+        "4. Secure the CPU: Close the latch on the motherboard socket to secure the CPU.",
+        "5. Pick up the RAM: Grab the RAM modules from the workspace.",
+        "6. Install the RAM into the motherboard slots: Press them down until they click into place.",
+        "7. Pick up the SSD: Find the SSD on the table and grab it.",
+        "8. Install the SSD: Insert the SSD into its slot on the motherboard.",
+        "9. Carefully pick up the motherboard: Gently lift the motherboard and prepare it for mounting.",
+        "10. Mount the motherboard on the stand: Place the motherboard into the case on the stand.",
+        "11. Ready for the first power-on test: All components are connected. Course is complete!"
+      ];
+
+      let currentStep = 0;
+
+      function updateStep() {
+        if (currentStep < steps.length) {
+          typeText(steps[currentStep], '#step1', 50);
+          updateStepCounter(currentStep + 1);
+
+          if (currentStep < steps.length - 1) {
+            currentStep++;
+          } else {
+            console.log("All steps completed!");
+          }
+        }
+      }
+
+      function typeText(text, elementId, speed) {
+        let wrappedText = wrapText(text, 30);
+        let i = 0;
+        const element = document.querySelector(elementId);
+        element.setAttribute('text', 'value', '');
+        const interval = setInterval(() => {
+          if (i < wrappedText.length) {
+            element.setAttribute('text', 'value', element.getAttribute('text').value + wrappedText.charAt(i));
+            i++;
+          } else {
+            clearInterval(interval);
+          }
+        }, speed);
+      }
+
+      function wrapText(text, maxLineLength) {
+        const words = text.split(' ');
+        let lines = [];
+        let currentLine = '';
+
+        words.forEach(word => {
+          if ((currentLine + word).length <= maxLineLength) {
+            currentLine += (currentLine ? ' ' : '') + word;
+          } else {
+            lines.push(currentLine);
+            currentLine = word;
+          }
         });
+
+        lines.push(currentLine);
+        return lines.join('\n');
+      }
+
+      function updateStepCounter(stepNumber) {
+        const stepCounter = document.querySelector('#step-counter');
+        stepCounter.setAttribute('text', 'value', 'Step ' + stepNumber + ' of ' + steps.length);
+      }
+
+      updateStep();
     </script>
+  </a-scene>
 </body>
 </html>
