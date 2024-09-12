@@ -3,25 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PC Building Training Program - AR Mode with Marker</title>
+  <title>PC Building Training Program - Building the Foundation</title>
 
   <!-- A-Frame Library -->
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 
-  <!-- AR.js Library for AR functionality -->
-  <script src="https://aframe.io/releases/1.2.0/aframe-ar.min.js"></script>
+  <!-- AR.js Library (latest version) -->
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
 
-  <!-- Physics and Other Dependencies -->
-  <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/cannon.js/0.6.2/cannon.min.js"></script>
-  <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
 </head>
-<body>
-  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;" physics="gravity: -9.8; debug: true" vr-mode-ui="enabled: false">
-    
+<body style="margin: 0; padding: 0;">
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;" vr-mode-ui="enabled: false">
+
     <!-- Asset Management -->
     <a-assets>
-      <!-- GLB Models for components -->
       <a-asset-item id="zastrcka" src="zastrcka.glb"></a-asset-item>
       <a-asset-item id="PScable" src="PScable.glb"></a-asset-item>
       <a-asset-item id="krytnacpu" src="krytnacpu.glb"></a-asset-item>
@@ -45,6 +40,9 @@
       <img id="completed" src="completed.png">
     </a-assets>
 
+    <!-- Add Camera Active Message -->
+    <a-entity id="camera-notification" text="value: Starting Camera...; color: red; width: 6;" position="0 2 -3" visible="true"></a-entity>
+
     <!-- All content wrapped in a marker -->
     <a-marker preset="hiro">
 
@@ -52,13 +50,13 @@
       <a-entity environment="preset: tron; groundColor: #445; skyColor: #88c;"></a-entity>
 
       <!-- Object Interactions -->
-      <a-entity id="cpu_hand" gltf-model="#cpu" position="2.416 0.952 0.189" scale="5 5 5" rotation="35.370 51.543 -114.815" dynamic-body visible="false"></a-entity>
-      <a-entity id="ram_hand" gltf-model="#ram" position="2.409 1.042 0.053" scale="5 5 5" rotation="-29.812 76.658 95.281" dynamic-body visible="false"></a-entity>
-      <a-entity id="ssd_hand" gltf-model="#ssd" position="2.409 1.076 0.174" scale="5 5 5" rotation="-40.895 81.216 93.280" dynamic-body visible="false"></a-entity>
+      <a-entity id="cpu_hand" gltf-model="#cpu" position="2.416 0.952 0.189" scale="5 5 5" rotation="35.370 51.543 -114.815" visible="false"></a-entity>
+      <a-entity id="ram_hand" gltf-model="#ram" position="2.409 1.042 0.053" scale="5 5 5" rotation="-29.812 76.658 95.281" visible="false"></a-entity>
+      <a-entity id="ssd_hand" gltf-model="#ssd" position="2.409 1.076 0.174" scale="5 5 5" rotation="-40.895 81.216 93.280" visible="false"></a-entity>
 
       <!-- Motherboard Model -->
       <a-entity id="motherboard-wrapper_hand" position="2.803 9.417 6.067" rotation="-58.909 -50.529 55.040" scale="3 3 3" visible="false">
-        <a-entity id="wmotherboard_hand" gltf-model="#motherboard" position="-1.162 1.033 -3.121" scale="2 2 2" rotation="-90 0 0" dynamic-body></a-entity>
+        <a-entity id="wmotherboard_hand" gltf-model="#motherboard" position="-1.162 1.033 -3.121" scale="2 2 2" rotation="-90 0 0"></a-entity>
       </a-entity>
 
       <!-- Checkmarks for Components -->
@@ -87,7 +85,7 @@
       </a-entity>
 
       <!-- CPU Entity -->
-      <a-entity id="cpu" gltf-model="#cpu" position="-1.598 0.991 -2.831" scale="2 2 2" rotation="-90 0 0" dynamic-body visible="true"
+      <a-entity id="cpu" gltf-model="#cpu" position="-1.598 0.991 -2.831" scale="2 2 2" rotation="-90 0 0"
         show-name-on-hover="distance: 2; checkmarkId: #check-cpu-icon"></a-entity>
     
     </a-marker>
@@ -260,6 +258,21 @@
       }
 
       updateStep();
+
+      AFRAME.registerComponent('camera-initialized', {
+        init: function () {
+          const notification = document.querySelector('#camera-notification');
+          notification.setAttribute('text', 'value', 'Camera is active!');
+          notification.setAttribute('color', 'green');
+          
+          setTimeout(() => {
+            notification.setAttribute('visible', 'false');
+          }, 3000); // Hide notification after 3 seconds
+        }
+      });
+
+      // Attach the camera-initialized component to the scene to handle camera initialization
+      document.querySelector('a-scene').setAttribute('camera-initialized', '');
     </script>
   </a-scene>
 </body>
