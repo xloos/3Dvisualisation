@@ -2,7 +2,7 @@ const sql = require('mssql');
 
 class Course {
     static async create(name, description, url, courseType, estimatedTime, endDate) {
-        const pool = await sql.connect(/* your database connection config */);
+        const pool = await sql.connect();
         await pool.request()
             .input('name', sql.NVarChar, name)
             .input('description', sql.NVarChar, description)
@@ -14,7 +14,7 @@ class Course {
     }
 
     static async findAll() {
-        const pool = await sql.connect(/* your database connection config */);
+        const pool = await sql.connect();
         const result = await pool.request()
             .query('SELECT * FROM [Login].[dbo].[Courses]');
         return result.recordset;

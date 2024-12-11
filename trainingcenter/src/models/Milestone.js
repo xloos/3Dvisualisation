@@ -2,7 +2,7 @@ const sql = require('mssql');
 
 class Milestone {
     static async create(courseId, title, description, isCompleted) {
-        const pool = await sql.connect(/* your database connection config */);
+        const pool = await sql.connect();
         await pool.request()
             .input('courseId', sql.Int, courseId)
             .input('title', sql.NVarChar, title)
@@ -12,7 +12,7 @@ class Milestone {
     }
 
     static async findAllForCourse(courseId) {
-        const pool = await sql.connect(/* your database connection config */);
+        const pool = await sql.connect();
         const result = await pool.request()
             .input('courseId', sql.Int, courseId)
             .query('SELECT * FROM [Login].[dbo].[Milestones] WHERE CourseID = @courseId');
@@ -20,7 +20,7 @@ class Milestone {
     }
 
     static async updateCompletionStatus(milestoneId, isCompleted) {
-        const pool = await sql.connect(/* your database connection config */);
+        const pool = await sql.connect();
         await pool.request()
             .input('milestoneId', sql.Int, milestoneId)
             .input('isCompleted', sql.Bit, isCompleted)

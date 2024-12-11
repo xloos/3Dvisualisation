@@ -19,7 +19,7 @@
           <!-- Ambientné svetlo pre jemné osvetlenie celej scény -->
       <a-light type="ambient" color="#555" intensity="5"></a-light>
 
-      <!-- Direkčné svetlo pre realistické tieňovanie -->
+      
       
 
       <!-- Pozadie scény -->

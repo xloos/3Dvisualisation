@@ -3,7 +3,7 @@ const sql = require('mssql');
 
 class UserCourse {
     static async countForUser(userId) {
-        const pool = await sql.connect(/* your database connection config */);
+        const pool = await sql.connect();
         const result = await pool.request()
             .input('userId', sql.Int, userId)
             .query('SELECT COUNT(*) as CourseCount FROM [Login].[dbo].[UserCourses] WHERE UserID = @userId');

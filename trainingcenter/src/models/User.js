@@ -2,7 +2,7 @@ const sql = require('mssql');
 const bcrypt = require('bcryptjs');
 class User {
     static async findByUsername(username) {
-        const pool = await sql.connect(/* your database connection config */);
+        const pool = await sql.connect();
         const result = await pool.request()
             .input('username', sql.NVarChar, username)
             .query('SELECT * FROM [Login].[dbo].[Users] WHERE Username = @username');
@@ -11,7 +11,7 @@ class User {
     }
 
     static async create(username, passwordHash) {
-        const pool = await sql.connect(/* your database connection config */);
+        const pool = await sql.connect();
         await pool.request()
             .input('username', sql.NVarChar, username)
             .input('passwordHash', sql.NVarChar, passwordHash)
@@ -19,7 +19,7 @@ class User {
     }
     
     static async findByUsernameAndPassword(username, password) {
-        const pool = await sql.connect(/* your database connection config */);
+        const pool = await sql.connect();
         const result = await pool
           .request()
           .input('username', sql.NVarChar, username)

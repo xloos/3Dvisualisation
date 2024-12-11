@@ -39,7 +39,8 @@
       <a-asset-item id="hand-right" src="https://cdn.aframe.io/controllers/oculus/oculus-touch-controller-right.gltf"></a-asset-item>
     </a-assets>
     
-    <a-entity environment="preset: tron; groundColor: #445; skyColor: #88c;"></a-entity>
+    <a-entity environment="preset: tron; groundColor: #222; skyColor: #333;"></a-entity>
+
 
     <a-entity id="camera" camera look-controls wasd-controls="acceleration: 10" position="0 1.6 0" dynamic-body>
       <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" gltf-model="#hand-left"></a-entity>
@@ -80,11 +81,11 @@
           <a-plane color="white" width="0.1" height="0.1" position="-0.374 0.041 -0.000" rotation="0 0 0" scale="2.900 1.070 1.000"></a-plane>
         </a-entity>
         
-        <a-entity text="value: ; color: #FFFFFF; shader: msdf; font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/justanotherhand/JustAnotherHand-Regular.json;" id="step1" position="0.206 0.098 -0.094" rotation="-90 0 0" width="1.5" align="left"></a-entity>
+        <a-entity text="value: ; color: black; shader: msdf; font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/justanotherhand/JustAnotherHand-Regular.json;" id="step1" position="0.206 0.098 -0.094" rotation="-90 0 0" width="1.5" align="left"></a-entity>
         
         <!-- Checkmark pre komponenty -->
         <a-image id="check-ps" src="#check_box" position="0.025 0.140 0.185" rotation="-90 0 0" scale="0.25 0.25 0.25">
-          <!-- Check remains hidden or visible -->
+          
           <a-image id="check-ps-icon" src="#check" position="0 0 0" rotation="0 0 0" scale="0.8 0.8 0.8" visible="false"></a-image>
         </a-image>
 
@@ -336,7 +337,7 @@
         // Function for handling picking up the CPU
         pickUpCPU: function () {
           if (!this.stepTriggered) {
-            console.log("Picked up CPU");  // Debug log
+            console.log("Picked up CPU");
             this.stepTriggered = true;
     
             // Hide CPU on the table and show in hand
@@ -359,7 +360,7 @@
         // Function for installing the CPU into the motherboard
         installCPU: function () {
           if (!this.stepTriggered) {
-            console.log("Installed CPU into motherboard");  // Debug log
+            console.log("Installed CPU into motherboard"); 
             this.stepTriggered = true;
     
             const cpuHand = document.querySelector('#cpu_hand');
@@ -381,8 +382,8 @@
         // Function for securing the CPU in the motherboard (step 4)
         secureCPU: function () {
   if (!this.stepTriggered && currentStep === 4) {
-    this.stepTriggered = true;  // Zabezpečíme, že sa spustí len raz
-    console.log("Secured CPU in motherboard (step 4)");  // Debug log
+    this.stepTriggered = true;  
+    console.log("Secured CPU in motherboard (step 4)");  
     
 
     const krytnacpu1 = document.querySelector('#krytnacpu1');
@@ -394,13 +395,13 @@
 
     setTimeout(() => {
       if (currentStep === 4) {
-        console.log("Moving from step 4 to 5");  // Debug log
+        console.log("Moving from step 4 to 5");  
         this.hideCheckmark();
         updateStep();  // Prechod na ďalší krok
       }
     }, 5000);
   } else if (currentStep > 4) {
-    console.log("Step 4 already completed, skipping action.");  // Zabezpečíme, že krok 4 sa nevykoná znova
+    console.log("Step 4 already completed, skipping action.");  
   }
 },
 
@@ -604,7 +605,7 @@ installMotherboardWrapper: function () {
     typeText(steps[currentStep], '#step1', 50, function() {});
     updateStepCounter(currentStep + 1);
 
-    // Ak sme na poslednom kroku (11), vykonáme špeciálne akcie
+    
     if (currentStep === 10) {  // Krok 11 je dosiahnutý, keď currentStep === 10
       console.log("Reached final step, hiding checkmarks and showing 'completed'");
 
@@ -619,11 +620,11 @@ installMotherboardWrapper: function () {
       document.querySelector('#check-woodencase').setAttribute('visible', 'false');
       document.querySelector('#check-cpu').setAttribute('visible', 'false');
 
-      // Zviditeľníme entitu 'completed'
+    
       document.querySelector('#completed_image').setAttribute('visible', 'true');
     }
 
-    // Zvýšenie currentStep, aby sme prešli na ďalší krok
+   
     if (currentStep < steps.length - 1) {
       currentStep++;  // Posun na ďalší krok
     } else {

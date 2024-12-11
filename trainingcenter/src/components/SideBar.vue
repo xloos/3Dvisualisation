@@ -97,9 +97,9 @@ export default {
   name: 'SideBar',
   data() {
     return {
-      courseCount: 0, // Pridajte tento dátový bod pre ukladanie počtu kurzov
+      courseCount: 0, // Dátový bod pre ukladanie počtu kurzov
       isDropdownOpen: false,
-      username: localStorage.getItem('username') || 'Guest', // Získajte meno prihláseného užívateľa alebo prednastavte hodnotu
+      username: localStorage.getItem('username') || 'Guest', 
     };
   },
   methods: {
@@ -107,10 +107,10 @@ export default {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
     fetchCourseCount() {
-      // Tu predpokladáme, že máte endpoint /api/usercourses/count na získanie počtu kurzov pre užívateľa
+     
       axios.get('/api/usercourses/count')
         .then(response => {
-          this.courseCount = response.data.count; // Nastaví počet kurzov na základe odpovede
+          this.courseCount = response.data.count; 
         })
         .catch(error => {
           console.error("There was an error fetching the course count:", error);
@@ -138,8 +138,8 @@ export default {
   <style scoped>
   #dropdown-user {
   position: absolute;
-  top: 100%; /* Ajuste esta propiedad para alinearla con la parte inferior del botón del usuario */
+  top: 100%; 
   right: 0;
-  z-index: 1000; /* Uistite sa, že má vyšší z-index ako iné elementy */
+  z-index: 1000; 
 }
   </style>

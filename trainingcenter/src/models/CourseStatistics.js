@@ -2,7 +2,7 @@ const sql = require('mssql');
 
 class CourseStatistics {
     static async recordStatistics(userId, courseId, timeSpent, attempts) {
-        const pool = await sql.connect(/* your database connection config */);
+        const pool = await sql.connect();
         await pool.request()
             .input('userId', sql.Int, userId)
             .input('courseId', sql.Int, courseId)
@@ -14,7 +14,7 @@ class CourseStatistics {
     }
 
     static async findByUser(userId) {
-        const pool = await sql.connect(/* your database connection config */);
+        const pool = await sql.connect();
         const result = await pool.request()
             .input('userId', sql.Int, userId)
             .query(`
