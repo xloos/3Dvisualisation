@@ -249,28 +249,28 @@
             <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white dark:bg-blue-800 text-blue-900 dark:text-white" data-inactive-classes="text-blue-500 dark:text-blue-400">
               <dl class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto text-blue-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8">
                 <div class="flex flex-col items-center justify-center">
-                    <dt class="mb-2 text-3xl font-extrabold">73M+</dt>
-                    <dd class="text-blue-500 dark:text-blue-400">Developers</dd>
+                    <dt class="mb-2 text-3xl font-extrabold">73+</dt>
+                    <dd class="text-blue-500 dark:text-blue-400">Coming Soon</dd>
                 </div>
                 <div class="flex flex-col items-center justify-center">
-                    <dt class="mb-2 text-3xl font-extrabold">100M+</dt>
-                    <dd class="text-blue-500 dark:text-blue-400">Public repositories</dd>
+                    <dt class="mb-2 text-3xl font-extrabold">100+</dt>
+                    <dd class="text-blue-500 dark:text-blue-400">Coming Soon</dd>
                 </div>
                 <div class="flex flex-col items-center justify-center">
                     <dt class="mb-2 text-3xl font-extrabold">1000s</dt>
-                    <dd class="text-blue-500 dark:text-blue-400">Open source projects</dd>
+                    <dd class="text-blue-500 dark:text-blue-400">Coming Soon</dd>
                 </div>
                 <div class="flex flex-col items-center justify-center">
-                    <dt class="mb-2 text-3xl font-extrabold">1B+</dt>
-                    <dd class="text-blue-500 dark:text-blue-400">Contributors</dd>
+                    <dt class="mb-2 text-3xl font-extrabold">10+</dt>
+                    <dd class="text-blue-500 dark:text-blue-400">Coming Soon</dd>
                 </div>
                 <div class="flex flex-col items-center justify-center">
                     <dt class="mb-2 text-3xl font-extrabold">90+</dt>
-                    <dd class="text-blue-500 dark:text-blue-400">Top Forbes companies</dd>
+                    <dd class="text-blue-500 dark:text-blue-400">Coming Soon</dd>
                 </div>
                 <div class="flex flex-col items-center justify-center">
-                    <dt class="mb-2 text-3xl font-extrabold">4M+</dt>
-                    <dd class="text-blue-500 dark:text-blue-400">Organizations</dd>
+                    <dt class="mb-2 text-3xl font-extrabold">4+</dt>
+                    <dd class="text-blue-500 dark:text-blue-400">Coming Soon</dd>
                 </div>
             </dl>
                 
